@@ -1,0 +1,1 @@
+./datasynth -synthmodel  compartment 3 CYLINDERGPD 0.6 1.7E-9 0.0  0.0  4E-6 zeppelin 0.1 1.7E-9 0.0 0.0 2E-10  Dot -schemefile PGSE_eff.scheme -voxels 1 > ZCD.Bfloat 2> ZCD.log

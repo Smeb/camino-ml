@@ -1,2 +1,6 @@
+.PHONY: clean
 all:
-	python3 gen_voxels.py
+	python3 main.py
+
+clean:
+	rm -rf data

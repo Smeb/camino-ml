@@ -2,6 +2,9 @@
 
 all:
 
+gen_data:
+	python3 main.py
+
 clean:
 	rm -rf data
 

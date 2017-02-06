@@ -15,7 +15,7 @@ def gen_voxels(config, n_files):
   with open(logfile_path, 'w+') as log:
     with ProgressBar(max_value=n_files) as bar:
       for i in range(n_files):
-        cmd = build_command(config.compartments, '{}/{}_{}'.format(dataset_path, config.fname, str(i)))
+        cmd = build_command(config.compartments, '{}/{}_{}.BFloat'.format(dataset_path, config.fname, str(i)))
         call(cmd, stderr=log)
         bar.update(i)
 

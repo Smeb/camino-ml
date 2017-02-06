@@ -1,9 +1,9 @@
 {
-  "CylinderZepDot": {
+  "Vlad": {
     "fname": "varies_ivf",
     "models": {
       "cylindergpd": {
-        "ivf": [0.6, 0.8],
+        "ivf": [0.6, 0.9],
         "d": 1.7E-9,
         "theta": 0.0,
         "phi": 0.0,
@@ -22,11 +22,11 @@
 
   },
 
-  "CylinderZepDot2": {
+  "Danish": {
     "fname": "varies_ivf",
     "models": {
       "cylindergpd": {
-        "ivf": [0.6, 0.8],
+        "ivf": 0.7,
         "d": 1.7E-9,
         "theta": 0.0,
         "phi": 0.0,

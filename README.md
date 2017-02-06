@@ -25,16 +25,16 @@ Configurations for voxel generation are defined in the [config.json](./config.js
 and loaded by logic in the [loader.py](./loader.py) file. Each configuration takes
 the following form:
 
-`"{dataset_name}": {
+```"{dataset_name}": {
     "fname": "{output file name}",
     "models": {compartment models used by camino},
-  }`
+  }```
 
 The models take the form:
 
-`"{model_name}": {
+```"{model_name}": {
     "{parameter_name}": {value}
-  }`
+  }```
 
 The values supplied for a parameter can either be a numerical value, or a list
 of two values. If two values are given, a sample will be taken

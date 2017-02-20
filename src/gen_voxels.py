@@ -3,9 +3,9 @@ import sys
 from progressbar import ProgressBar
 from termcolor import colored
 
-from models.model import Model
+from src.models.model import Model
 from subprocess import call, check_output
-from settings import data_path, datasynth_path, scheme_path
+from src.settings import data_path, datasynth_path, scheme_path
 
 def gen_voxels(config, n_files):
   dataset_path = '{}/{}'.format(data_path, config.name)

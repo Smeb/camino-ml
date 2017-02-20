@@ -1,10 +1,10 @@
 import datetime
-import loader
 import logging
 import os
 import time
-from gen_voxels import gen_voxels
-from settings import config_file_path, dataset_size, data_path
+import src.loader as loader
+from src.gen_voxels import gen_voxels
+from src.settings import config_file_path, dataset_size, data_path
 
 if __name__ == "__main__":
   configs = loader.load_file(config_file_path)

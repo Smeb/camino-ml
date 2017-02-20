@@ -1,6 +1,6 @@
 import collections
 import json
-from models.model import Model
+from src.models.model import Model
 
 def load_file(fname):
   with open(fname) as f:

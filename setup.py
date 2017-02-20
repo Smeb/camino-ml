@@ -7,6 +7,8 @@ setup(
   author='Ben Ryves',
   author_email='bryves@gmail.com',
   install_requires=[
+    'numpy',
+    'scipy',
     'termcolor',
     'progressbar2'
   ]

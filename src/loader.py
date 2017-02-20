@@ -1,6 +1,6 @@
 import collections
 import json
-from src.models.model import Model
+from src.biomodels.model import Model
 
 def load_file(fname):
   with open(fname) as f:
@@ -19,4 +19,25 @@ class DatasetConfig:
   def __init__(self, dataset_name, obj):
     self.name = dataset_name
     self.build_compartments(obj[dataset_name]['models'])
-    self.fname = obj[dataset_name]['fname']
+
+def transformData(path):
+  import os
+  import numpy as np
+  dt = np.dtype('>f')
+
+  isExec = False
+  BFloatFiles = [filename for filename in os.listdir(path) if filename.endswith(".Bfloat")]
+  voxelCount = len(BFloatFiles)
+
+  # Prevents error in case of no BFloat files
+  finalArray = []
+  for fname in BFloatFiles:
+    voxArray = np.fromfile("{}/{}".format(path, fname), dtype=dt, sep="")
+    if isExec == False:
+      finalArray = np.full([voxelCount, len(voxArray)], 0)
+      isExec = True
+    voxArray = voxArray.reshape((1, voxArray.size))
+
+    voxNumber = int(filter(str.isdigit, fname))
+    finalArray[voxNumber] = voxArray
+  return finalArray

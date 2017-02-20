@@ -3,7 +3,10 @@
 all:
 
 gen_data:
-	python3 main.py
+	python main.py gen_data
+
+train:
+	python main.py train Tensor
 
 clean:
 	rm -rf data
@@ -14,4 +17,4 @@ install:
 	cd camino
 	make -C ./camino
 	cd ..
-	python3 setup.py install
+	python setup.py install

@@ -5,7 +5,7 @@ from progressbar import ProgressBar
 from termcolor import colored
 
 from subprocess import call, check_output
-from src.settings import data_path, datasynth_path, scheme_path
+from src.settings import data_path, datasynth_path, float2txt_path, scheme_path
 
 def gen_voxels(config, n_files):
   dataset_path = '{}/{}'.format(data_path, config.name)
@@ -16,9 +16,10 @@ def gen_voxels(config, n_files):
   with open(logfile_path, 'w+') as log:
     with ProgressBar(max_value=n_files) as bar:
       for i in range(n_files):
-        cmd, params = build_command(config.compartments, '{}/{}.Bfloat'.format(dataset_path, str(i)))
+        cmd, params = build_command(config.compartments, '{}/{}.float'.format(dataset_path, str(i)))
         store_params(params, params_path)
-        call(cmd, stderr=log)
+        call(' '.join(cmd), shell=True, stderr=log)
+        print(cmd)
         bar.update(i)
 
 def build_command(compartments, output_path):
@@ -29,7 +30,7 @@ def build_command(compartments, output_path):
     params.append(str(compartment))
   cmd += params
   cmd.append('-schemefile {} -voxels 1'.format(scheme_path))
-  cmd.append('-outputfile {}'.format(output_path))
+  cmd.append('| {} > {}'.format(float2txt_path, output_path))
   return cmd, params
 
 def store_params(params, param_file):

@@ -12,4 +12,5 @@ def entry(configs, modelname):
   task(config)
 
 def task(config):
-  print(loader.transformData("{}/{}/".format(data_path, config.name)))
+  dwi_data = loader.loadData("{}/{}/".format(data_path, config.name))
+  ground_truth = loader.loadParams("{}/{}/{}.params".format(data_path, config.name, config.name))

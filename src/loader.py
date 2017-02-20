@@ -20,24 +20,22 @@ class DatasetConfig:
     self.name = dataset_name
     self.build_compartments(obj[dataset_name]['models'])
 
-def transformData(path):
+def loadParams(path):
+  import numpy as np
+  return np.genfromtxt(path)
+
+
+def loadData(path):
   import os
   import numpy as np
-  dt = np.dtype('>f')
 
-  isExec = False
-  BFloatFiles = [filename for filename in os.listdir(path) if filename.endswith(".Bfloat")]
-  voxelCount = len(BFloatFiles)
+  BFloatFiles = [filename for filename in os.listdir(path) if filename.endswith(".float")]
+  vectors = [None] * len(BFloatFiles)
 
-  # Prevents error in case of no BFloat files
-  finalArray = []
+  # Prevents error in case of no float files
   for fname in BFloatFiles:
-    voxArray = np.fromfile("{}/{}".format(path, fname), dtype=dt, sep="")
-    if isExec == False:
-      finalArray = np.full([voxelCount, len(voxArray)], 0)
-      isExec = True
-    voxArray = voxArray.reshape((1, voxArray.size))
-
+    voxArray = np.genfromtxt("{}{}".format(path, fname))
     voxNumber = int(filter(str.isdigit, fname))
-    finalArray[voxNumber] = voxArray
+    vectors[voxNumber] = voxArray.flatten()
+  finalArray = np.array(vectors)
   return finalArray

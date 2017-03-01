@@ -6,4 +6,4 @@ datasynth_path = os.path.abspath(root_path + '/camino/bin/datasynth')
 float2txt_path = os.path.abspath(root_path + '/camino/bin/float2txt')
 scheme_path = os.path.abspath(root_path + '/PGSE_90.scheme')
 data_path = os.path.abspath(root_path + '/data')
-dataset_size = 5
+dataset_size = 12500

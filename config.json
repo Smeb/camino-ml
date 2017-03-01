@@ -1,45 +1,13 @@
 {
-  "Vlad": {
-    "fname": "varies_ivf",
+  "Tensor": {
     "models": {
-      "cylindergpd": {
-        "ivf": [0.6, 0.9],
-        "d": 1.7E-9,
+      "tensor": {
+        "ivf": [0.8E-9, 2.2E-9],
+        "d": 0.0,
         "theta": 0.0,
-        "phi": 0.0,
-        "R": 4E-6
-      },
-      "zeppelin": {
-        "ivf": 0.1,
-        "d": 1.7E-9,
-        "theta": 0.0,
-        "phi": 0.0,
-        "d_perp": 2E-6
-      },
-      "dot": {
-      }
-    }
-
-  },
-
-  "Danish": {
-    "fname": "varies_ivf",
-    "models": {
-      "cylindergpd": {
-        "ivf": 0.7,
-        "d": 1.7E-9,
-        "theta": 0.0,
-        "phi": 0.0,
-        "R": 4E-6
-      },
-      "zeppelin": {
-        "ivf": 0.1,
-        "d": 1.7E-9,
-        "theta": 0.0,
-        "phi": 0.0,
-        "d_perp": 2E-6
-      },
-      "dot": {
+        "pi": 2.0E-9,
+        "R": 1.4E-9,
+        "r": 0.0
       }
     }
   }

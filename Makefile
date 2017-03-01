@@ -1,7 +1,11 @@
-.PHONY: clean clean_data install gen_data
+.PHONY: clean clean_data install gen_data train
+all:
 
 gen_data:
-	python3 main.py
+	python main.py gen_data
+
+train:
+	python main.py train Tensor
 
 clean:
 	rm -rf dist build data ml_experiments.egg-info __pycache__
@@ -15,4 +19,3 @@ install:
 	cd camino
 	make -C ./camino
 	cd ..
-	python3 setup.py install

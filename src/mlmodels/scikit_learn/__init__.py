@@ -6,7 +6,7 @@ from .visualisation import visualise
 from .random_forest import trainRF
 from .knn import trainKNN
 from .svm import trainSVM
-from .mlp import trainMLP
+from .neural_nets import trainMLP
 
 def entry(data):
   rf_experiment = Experiment('RandomForest', trainRF, data)

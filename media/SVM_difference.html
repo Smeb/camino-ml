@@ -1,0 +1,4858 @@
+
+<!DOCTYPE html>
+<head>
+  <title>Vega-Lite Chart</title>
+  <meta charset="utf-8">
+
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://vega.github.io/vega/vega.js"></script>
+  <script src="https://vega.github.io/vega-lite/vega-lite.js"></script>
+  <script src="https://vega.github.io/vega-editor/vendor/vega-embed.js" charset="utf-8"></script>
+
+  <style media="screen">
+    /* Add space between vega-embed links  */
+    .vega-actions a {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Container for the visualization -->
+  <div id="vis"></div>
+
+  <script>
+  var vlSpec = {
+    "width": 1000.0, 
+    "mark": "point", 
+    "data": {
+        "values": [
+            {
+                "difference": 0.08776489241414676, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07657545722039183, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0004413572647670172, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.033145199479012954, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06609620385313475, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0905400119679946, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.04484381439532015, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.07091016456684951, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09854210282826906, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07989751561600733, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.05238386689539776, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.008963041566953489, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.03474052127937788, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07224578358539657, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.08415896377259902, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09842567650487022, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.010208546402410201, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.002541496282256972, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.013201665982583766, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.038610918342805056, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0012888332368052868, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08762620578942332, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.031294525813121865, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0038205197919509715, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.03924532882511944, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09205872248650859, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09485697009966368, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09162492417737822, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07813328251014362, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.04548852654567914, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.00641889829331399, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.03552606423325577, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09202462306607134, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05832393841702177, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05933829210764163, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0886255531340655, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08622708371693727, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.10107803072550037, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06515620436459868, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09900360644168116, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06917012475061945, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0026179182329795214, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.023250775500983645, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0871219476133725, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09579049702419262, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07177176111928407, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07929525047229957, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0803634052321407, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07541882606927885, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0995180426712088, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06574216328996263, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.07891072503180996, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0031051167852209627, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.030445088733371928, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.04091557415137337, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08958170459425774, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05962669082211358, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09120574860554581, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.05437414576354915, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06841513063836657, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09871727431460497, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.011550970325891141, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.033652041099751506, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.065484376889963, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.09606120271742102, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09720750294671146, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.022313186135826557, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.007530840777505432, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0017494651829725871, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08543220417484393, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09950875649834036, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09740203611315756, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.020234474903585875, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.06961152174841212, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.09399776948473715, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.022205099883319646, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06226128108942486, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.035638847721291, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09228305374505391, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09059263086975938, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0144812847364173, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.026314071678060547, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.07369810160707035, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.029806592479511007, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07939408440996198, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.06334427722437552, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.016024266174644808, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08813543890804226, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.006669972299868432, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09600363071504997, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0386715314768723, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09749451834349024, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.011544698570874035, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07919121553993003, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08436625473908549, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09415255974225645, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07089768752727044, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.05151412212174655, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.099518904722185, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.016045944858046113, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08227544268600184, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.024877279011308318, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.022772165919909382, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.09248657289690532, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09939094921287145, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.03859856056636701, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09460350162162218, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.026104556032465087, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.002741659243776562, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08954171579045672, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09228881171663089, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0859804856064732, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08967205223478603, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.010513959436898146, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09815395925631834, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0642382705712824, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.043374126545595026, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05462806688804811, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.06620179734455234, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0985030700257161, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09716577577830943, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.011819404024395741, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09950853226614054, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.02190240338783256, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.05165449968256586, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.030833843486341106, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07631149302061335, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.03019094703990932, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08241194732155688, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09833917248732854, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.006507050786158652, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07577227117121588, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.07647560038392509, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05920191406924258, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09134104935183218, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.09454791290654407, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08698179571660003, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.045573824252169715, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.006726724628129288, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08966203591756294, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0950665559288327, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09925979107313286, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.04660270864234983, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06046390620624864, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.005347353238475572, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08948408895002247, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0390866655152311, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.03718168033591418, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09844400750635546, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06900827179662294, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.022314374065313558, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.047809090405111165, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.001561782730866934, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09833491415167445, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09872935077740048, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07094062895017261, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0630338959889607, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.001583264487566849, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06075333359670976, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07932603889844958, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0916751002279973, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.05152688386374793, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09832948443935216, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.050401067135560806, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.09274361463557046, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09947780721048027, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.04217608871165546, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06811567959193587, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.04946059722806306, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07481242139016497, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07848234872454174, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.07929654068432979, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05161139066170051, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07851362748159452, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 5.8569403145414256e-05, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.04937656019105596, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.07727998528416458, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.0036476275706913697, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0950686609183923, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.005673754780834983, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.009920668791438603, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.05118463634802972, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09399986901316482, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.05847410328975278, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09948929252560722, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09619917009804949, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.04659570631939136, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09485673489796775, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08675907680451, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09939564988826188, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09794847862154091, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.012181334477675776, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.021919243122791254, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.09925681626609634, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08378696830414067, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.08443072979860095, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.06637485669095788, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": -0.0622527098614607, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.018543914982374066, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }, 
+            {
+                "difference": 0.015840964579683314, 
+                "name": "tensor_ivf"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_d"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_theta"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_pi"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_R"
+            }, 
+            {
+                "difference": 0.0, 
+                "name": "tensor_r"
+            }
+        ]
+    }, 
+    "encoding": {
+        "y": {
+            "field": "name", 
+            "type": "nominal"
+        }, 
+        "x": {
+            "field": "difference", 
+            "type": "quantitative", 
+            "axis": {
+                "format": "g"
+            }
+        }
+    }
+}
+
+  var embedSpec = {
+    mode: "vega-lite",  // Instruct Vega-Embed to use the Vega-Lite compiler
+    spec: vlSpec
+  };
+
+  // Embed the visualization in the container with id `vis`
+  vg.embed("#vis", embedSpec, function(error, result) {
+    // Callback receiving the View instance and parsed Vega spec
+    // result.view is the View, which resides under the '#vis' element
+  });
+  </script>
+</body>
+</html>

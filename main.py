@@ -5,6 +5,11 @@ from src.gen_voxels import gen_data
 from src.routes import config_file_path
 from src.mlmodels.scikit_learn import entry
 
+def warn(*args, **kwargs):
+  pass
+import warnings
+warnings.warn = warn
+
 def usage():
   print("python main.py <cmd> <option> where <cmd> is one of")
   print("  gen_data            -- to generate data")
@@ -12,6 +17,7 @@ def usage():
 
 def generate():
   configs = loader.load_file(config_file_path)
+  print(configs)
   gen_data(configs)
 
 def train_model(model):

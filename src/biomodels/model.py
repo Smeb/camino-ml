@@ -4,6 +4,7 @@ class Model:
   def __init__(self, name, params):
     self._name = name
     self._params = []
+    self._paramNames = params.keys()
     for item in params:
       self._params.append(params[item])
 

@@ -26,14 +26,14 @@ def gen_data(configs):
 
   logging.log(logging.INFO, 'Creating: {} datasets'.format(len(configs)))
 
-  for config in configs:
+  for name, config in configs.iteritems():
     start = time.time()
-    gen_voxels(config, dataset_size)
+    gen_voxels(name, config, dataset_size)
     end = time.time()
-    logging.log(logging.INFO, '{0} {1} {2:.2}s'.format(config.name, dataset_size, end - start))
+    logging.log(logging.INFO, '{0} {1} {2:.2}s'.format(name, dataset_size, end - start))
 
 
-def gen_voxels(config, n_files):
+def gen_voxels(name, config, n_files):
   dataset_path = '{}/{}'.format(data_path, config.name)
   os.makedirs(dataset_path)
   logfile_path = '{}/{}.log'.format(data_path, config.name)

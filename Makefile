@@ -1,4 +1,5 @@
-.PHONY: clean clean_data install gen_data
+.PHONY: clean clean_data install gen_data train
+all:
 
 gen_data:
 	python main.py gen_data
@@ -18,4 +19,3 @@ install:
 	cd camino
 	make -C ./camino
 	cd ..
-	python setup.py install

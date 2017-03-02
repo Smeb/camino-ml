@@ -7,7 +7,7 @@ from src.biomodels.model import Model
 
 def load_file(fname):
   with open(fname) as f:
-    configs = dict()
+    configs = collections.OrderedDict()
     obj = json.JSONDecoder(object_pairs_hook=collections.OrderedDict).decode(f.read())
     for item in obj:
       configs[item] = DatasetConfig(item, obj)

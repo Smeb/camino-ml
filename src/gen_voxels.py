@@ -63,4 +63,5 @@ def store_params(params, param_file):
     f_flag = 'w'
   with open(param_file, f_flag) as f:
     for param in params:
-      print(param.partition(' ')[2], file=f)
+      print(param.partition(' ')[2], file=f, end=" ")
+    print(file=f)

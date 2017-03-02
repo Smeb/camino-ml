@@ -1,25 +1,35 @@
 from src.mlmodels.experiment import Experiment
 
-from .evaluation import evaluate
-from .visualisation import visualise
+from .visualisation import visualise_evaluations
 
 from .random_forest import trainRF
 from .knn import trainKNN
 from .svm import trainSVM
 from .neural_nets import trainMLP
+from .ridge_regression import trainRidge
 
-def entry(data):
-  rf_experiment = Experiment('RandomForest', trainRF, data)
-  mlp_experiment = Experiment('MultiLayerPerceptron', trainMLP, data)
-  svm_experiment = Experiment('SVM', trainSVM, data)
-  knn_experiment = Experiment('KNN', trainKNN, data)
+# TODO: split out model training from model evaluation and
+# visualisation. Shouldn't have to make a new model each time (use pickle?)
+def run_experiments(data, data_model):
+  experiments = []
+  experiments.append(Experiment('RandomForest', trainRF, data, data_model))
+  experiments.append(Experiment('MultiLayerPerceptron', trainMLP, data, data_model))
+  experiments.append(Experiment('SVM', trainSVM, data, data_model))
+  experiments.append(Experiment('KNN', trainKNN, data, data_model))
+  experiments.append(Experiment('RidgeRegression', trainRidge, data, data_model))
+  return experiments
 
-  rf_experiment.evaluate()
-  mlp_experiment.evaluate()
-  svm_experiment.evaluate()
-  knn_experiment.evaluate()
+def entry(data, data_model):
+  experiments = run_experiments(data, data_model)
+  evaluations = []
+  for experiment in experiments:
+    evaluations.append((experiment, experiment.evaluate()))
+    experiment.visualise()
 
-  rf_experiment.visualise()
-  mlp_experiment.visualise()
-  svm_experiment.visualise()
-  knn_experiment.visualise()
+def evaluate_all(datum):
+  evaluations = []
+  for data, data_model in datum:
+    experiments = run_experiments(data, data_model)
+    for experiment in experiments:
+      evaluations.append((experiment, experiment.evaluate()))
+  visualise_evaluations(evaluations)

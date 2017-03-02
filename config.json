@@ -12,13 +12,13 @@
     }
   },
 
-  "BallCyclinderDot": {
+  "BallCylinderDot": {
     "models": {
       "ball": {
         "ivf": [0.2, 0.5],
         "d": [0.8E-9, 2.2E-9]
       },
-      "cylinder": {
+      "cylinderGPD": {
         "ivf": [0.2, 0.5],
         "d": [0.8E-9, 2.2E-9],
         "theta": 0.0,
@@ -33,6 +33,7 @@
   "TensorCylinderSphere": {
     "models": {
       "tensor": {
+        "ivf": [0.2, 0.5],
         "d": [0.8E-9, 2.2E-9],
         "theta": 0.0,
         "phi": 0.0,
@@ -40,14 +41,14 @@
         "d_perp2": [0.8E-9, 2.2E-9],
         "alpha": 0.0
       },
-      "cylinder": {
+      "cylinderGPD": {
         "ivf": [0.2, 0.5],
         "d": [0.8E-9, 2.2E-9],
         "theta": 0.0,
         "phi": 0.0,
         "R": [1.5E-6, 2.5E-6]
       },
-      "sphere": {
+      "sphereGPD": {
         "d": [0.8E-9, 2.2E-9],
         "Rs": [1.5E-6, 2.5E-6]
       }
@@ -60,10 +61,10 @@
         "ivf": [0.2, 0.5],
         "d": [0.8E-9, 2.2E-9]
       },
-      "GDRCylinder": {
+      "gammadistribradiicylinders": {
         "ivf": [0.2, 0.5],
         "k": [1.7, 2.7],
-        "b": [0.8, 1.4],
+        "b": [0.8E-6, 1.4E-6],
         "d": [0.8E-9, 2.2E-9],
         "theta": 0.0,
         "phi": 0.0
@@ -75,14 +76,26 @@
 
   "ZeppelinGDRCylindersSphere": {
     "models": {
-      "tensor": {
-        "ivf": [0.8E-9, 2.2E-9],
-        "d": 0.0,
+      "zeppelin": {
+        "ivf": [0.2, 0.5],
+        "d": [0.8E-9, 2.2E-9],
         "theta": 0.0,
-        "pi": 2.0E-9,
-        "R": 1.4E-9,
-        "r": 0.0
+        "phi": 2.0E-9,
+        "d_perp": [0.8E-9, 2.2E-9]
+      },
+      "gammadistribradiicylinders": {
+        "ivf": [0.2, 0.5],
+        "k": [1.7, 2.7],
+        "b": [0.8E-6, 1.4E-6],
+        "d": [0.8E-9, 2.2E-9],
+        "theta": 0.0,
+        "phi": 0.0
+      },
+      "sphereGPD": {
+        "d": [0.8E-9, 2.2E-9],
+        "Rs": [1.5E-6, 2.5E-6]
       }
+
     }
   }
 }

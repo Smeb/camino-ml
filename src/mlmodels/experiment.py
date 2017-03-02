@@ -1,17 +1,17 @@
 from src.mlmodels.scikit_learn.evaluation import evaluate
-from src.mlmodels.scikit_learn.visualisation import visualise
+from src.mlmodels.scikit_learn.visualisation import visualise_difference
 class Experiment:
-  def __init__(self, name, method, data):
+  def __init__(self, name, method, data, data_model):
     self.name = name
     self.data = data
     self.model = method(data)
+    self.data_model = data_model
 
   def predict(self, testX):
     return self.model.predict(testX)
 
   def evaluate(self):
-    print("Evaluation for {}".format(self.name))
-    evaluate(self.data, self.model)
+    return evaluate(self.data, self.model)
 
   def visualise(self):
-    visualise(self.data, self.model, self.name)
+    visualise_difference(self.data, self.model, self.name, self.data_model)

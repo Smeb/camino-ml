@@ -7,7 +7,4 @@ def evaluate(data, model):
   mean_squared_error = metrics.mean_squared_error(testY, prediction)
   r2_score = metrics.r2_score(testY, prediction)
 
-  print("Mean Absolute Error: {}".format(mean_absolute_error))
-  print("Mean Squared Error: {}".format(mean_squared_error))
-  print("R2 Score: {}".format(r2_score))
-  print
+  return mean_absolute_error, mean_squared_error, r2_score

@@ -31,7 +31,7 @@ def visualise_difference(data, model, model_name, dataset_name):
 
   chart_data = pandas.DataFrame(columns=['name', 'difference'])
 
-  for index, row in difference_matrix.iterrows():
+  for _, row in difference_matrix.iterrows():
     for index, value in enumerate(row):
       chart_data = chart_data.append({'name': feature_names[index], 'difference': value}, ignore_index=True)
 

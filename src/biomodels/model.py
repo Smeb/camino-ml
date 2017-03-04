@@ -17,3 +17,4 @@ class Model:
         sample = param
       string = ' '.join([string, str(sample)])
     return string
+

@@ -1,1 +1,2 @@
-dataset_size = 1000
+dataset_size = 12500
+SVR_cache = 1000

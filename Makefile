@@ -1,14 +1,17 @@
-.PHONY: clean clean_data install gen_data train
+.PHONY: clean clean_data install gen_data train-tensor train-zeppelingdrcylinderssphere train-ballgdrcylinderdot train-ballcylinderdot train-tensorcylindersphere train-all
 all:
 
-gen_data:
-	python main.py gen_data
+generate:
+	python main.py generate
 
-train:
-	python main.py train Tensor
+train-all:
+	python main.py train-all
+
+evaluate-all:
+	python main.py evaluate-all
 
 clean:
-	rm -rf dist build data ml_experiments.egg-info __pycache__
+	rm -rf dist build data __pycache__
 
 clean_data:
 	rm -rf data

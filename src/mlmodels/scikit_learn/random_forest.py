@@ -1,2 +1,0 @@
-def trainRF(data):
-  pass

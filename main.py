@@ -14,9 +14,12 @@ import warnings
 warnings.warn = warn
 
 def usage():
-  print("python main.py <cmd> <option> where <cmd> is one of")
-  print("  gen_data            -- to generate data")
-  print("  train <modelname>   -- to train a model (data must be generated first)")
+  print "python main.py <cmd> where <cmd> is one of"
+  print "  generate            -- to generate data"
+  print "  train-all           -- to train all models using generated data"
+  print
+  print "Models can be configured in src/config.py; compartment names"
+  print "must match those in camino_compartments, which is defined in the same file"
 
 def train_models():
   factory = ModelFactory()

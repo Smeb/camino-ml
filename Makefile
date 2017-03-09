@@ -1,4 +1,4 @@
-.PHONY: clean clean_data install gen_data train-tensor train-zeppelingdrcylinderssphere train-ballgdrcylinderdot train-ballcylinderdot train-tensorcylindersphere train-all
+.PHONY: clean clean_data install generate train-all
 all:
 
 generate:
@@ -6,9 +6,6 @@ generate:
 
 train-all:
 	python main.py train-all
-
-evaluate-all:
-	python main.py evaluate-all
 
 clean:
 	rm -rf dist build data __pycache__

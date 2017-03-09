@@ -41,4 +41,4 @@ models = [
   ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
 ]
 
-dataset_size = 10
+dataset_size = 12500

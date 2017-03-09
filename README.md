@@ -42,9 +42,9 @@ of two values. If two values are given, a sample will be taken
 in the range provided using uniform sampling.
 
 ## Notes on running
-If running on a mac, it is suggested to use `caffeinate`, i.e:
+If running on a mac, it is suggested to use `caffeinate -i`, i.e:
 
-`caffeinate python main.py generate && caffeinate python main.py train-all`
+`caffeinate -i python main.py generate && caffeinate -i python main.py train-all`
 
 This way the mac will not sleep until the generation and training is
 completed.

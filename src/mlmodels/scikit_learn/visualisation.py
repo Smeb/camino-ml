@@ -1,6 +1,9 @@
-from altair import Axis, Chart, Text, X, Y, Color
-import matplotlib.pyplot as plt
+import os
+import errno
+
 import pandas
+import matplotlib.pyplot as plt
+from altair import Axis, Chart, Text, X, Y, Color
 from sklearn import metrics
 from tqdm import tqdm
 
@@ -25,11 +28,20 @@ def calc_axis_limits(X, Y):
   coord_diff = 1 if max_xy == 0 else max_xy * 0.1
   return (min_xy - coord_diff, max_xy + coord_diff)
 
-def visualise_param_v_param(test_Ys, predict_Ys, feature_names, model_name, dataset_name):
+def visualise_param_v_param(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
+  visualisation_path = "{}/predicted_vs_actual".format(dataset_path)
+  try:
+    os.makedirs(visualisation_path)
+  except OSError as exc:
+    if exc.errno == errno.EEXIST and os.path.isdir(visualisation_path):
+      pass
+    else:
+      raise
+
   chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
   chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)
 
-  print('Generating {}/{} comparison graphs X_actual vs X_predicted'.format(dataset_name, model_name))
+  print('Generating {} comparison graphs X_actual vs X_predicted'.format(method_name))
   for feature in tqdm(feature_names):
     x_features = chart_x[feature].tolist()
     y_features = chart_y[feature].tolist()
@@ -52,29 +64,13 @@ def visualise_param_v_param(test_Ys, predict_Ys, feature_names, model_name, data
     except:
       pass
 
-    plt.savefig('{}/{}-{}-{}.png'.format(media_path, dataset_name, model_name, feature))
+    plt.savefig('{}/{}-{}.png'.format(visualisation_path, method_name, feature))
     plt.clf()
 
 def visualise_evaluations(evaluations):
-  pass
-  experiment_data = pandas.DataFrame(columns=['method', 'mean_absolute_error', 'mean_squared_error', 'r2_score'])
-  for method, evaluation_set in evaluations:
-    mean_absolute_error, mean_squared_error, r2_score = evaluation_set
-    experiment_data = experiment_data.append({
-      'method': method.name,
-      'model': method.data_model,
-      'mean_absolute_error': mean_absolute_error,
-      "mean_squared_error": mean_squared_error,
-      "r2_score": r2_score
-    }, ignore_index=True)
-  chartTypes = ['mean_absolute_error', 'mean_squared_error', 'r2_score']
-  charts = []
-  for type in chartTypes:
-    chart = heat_map(experiment_data, row='model', column='method', color=type).to_html()
-    with open('{}/{}_heatmap.html'.format(media_path, type), 'w') as f:
-      f.write(chart)
+  return
 
-def visualise_difference(test_Ys, predict_Ys, feature_names, model_name, dataset_name):
+def visualise_difference(test_Ys, predict_Ys, feature_names, model_name):
   return
 
 def heat_map(data, row, column, color):

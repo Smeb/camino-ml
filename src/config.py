@@ -25,13 +25,20 @@ definitions = {
 }
 
 models = [
+  ['ball'],
+  ['zeppelin'],
   ['tensor'],
+
   ['ball', 'stick'],
-  ['ball', 'cylindergpd', 'dot'],
-  ['ball', 'gammadistribradiicylinders', 'dot'],
-  ['tensor', 'cylindergpd', 'spheregpd'],
-  ['zeppelin', 'gammadistribradiicylinders', 'spheregpd'],
+  ['ball', 'cylindergpd'],
+  ['ball', 'gammadistribradiicylinders'],
+
+  ['ball', 'stick', 'astrosticks'],
+  ['ball', 'stick', 'astrocylinders'],
   ['ball', 'stick', 'spheregpd'],
+  ['ball', 'stick', 'dot'],
+
+  ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
 ]
 
 dataset_size = 10

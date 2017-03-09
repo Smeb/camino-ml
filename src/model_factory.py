@@ -54,19 +54,25 @@ class ModelFactory:
 
   def gen_voxel(self, model, output_path, log):
     cmd = ["{} -synthmodel compartment {}".format(datasynth_path, len(model))]
-    for compartment in model:
-      cmd.append("{} {}".format(compartment, self.stringify_params(model, compartment)))
+    for index, compartment in enumerate(model):
+      if len(model) - 1 == index:
+        cmd.append("{} {}".format(compartment, self.stringify_params_no_ivf(model, compartment)))
+      else:
+        cmd.append("{} {}".format(compartment, self.stringify_params(model, compartment)))
     cmd.append("-schemefile {} -voxels 1".format(scheme_path))
     cmd.append("| {} > {}".format(float2txt_path, output_path))
     call(" ".join(cmd), shell=True, stderr=log)
 
   def write_params(self, model, param_file):
-        for compartment in model:
-          print(self.stringify_params(model, compartment), end=" ", file=param_file)
-        print(file=param_file)
+    for compartment in model:
+      print(self.stringify_params(model, compartment), end=" ", file=param_file)
+    print(file=param_file)
 
   def stringify_params(self, model, compartment):
-      return " ".join(str(model[compartment][param]) for param in model[compartment])
+    return " ".join(str(model[compartment][param]) for param in model[compartment])
+
+  def stringify_params_no_ivf(self, model, compartment):
+    return " ".join(str(model[compartment][param]) for param in model[compartment] if param is not "ivf")
 
   def write_spec(self, compartments, name):
     with open("{}/{}/{}.spec".format(data_path, name, name), 'w') as definition_file:

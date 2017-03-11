@@ -2,6 +2,7 @@
 /media
 **/__pycache__/**
 **/data/**
+**/data_bak/**
 ml_experiments.egg-info/**
 dist
 build

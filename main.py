@@ -5,7 +5,7 @@ from src.gen_voxels import generate
 from src.config import models
 from src.model_factory import ModelFactory
 from src.routes import config_file_path
-from src.mlmodels.scikit_learn import entry, evaluate_all
+from src.mlmodels.tensorflow.entry import entry
 
 # Silences the deprecation warning from scikit
 def warn(*args, **kwargs):
@@ -23,7 +23,7 @@ def usage():
 
 def train_models():
   factory = ModelFactory()
-  datum = [loader.load_data(model, factory) for model in models]
+  datum = [loader.load_float_data(model, factory) for model in models]
   for data, data_model in datum:
     print("Training {}".format(data_model))
     entry(data, data_model)

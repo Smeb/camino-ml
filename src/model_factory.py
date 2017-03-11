@@ -6,7 +6,7 @@ from subprocess import call
 from collections import OrderedDict
 
 from tqdm import tqdm
-from config import camino_compartments, definitions, dataset_size
+from config import camino_compartments, definitions, dataset_size, signal_noise_ratio
 from routes import data_path, datasynth_path, float2txt_path, scheme_path
 
 class ModelFactory:
@@ -15,7 +15,7 @@ class ModelFactory:
     self.definitions = definitions
 
   def gen_name(self, compartments):
-    return "".join(compartments) + "_{}".format(dataset_size)
+    return "".join(compartments) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)
 
   def get_dataset_path(self, model):
     return "{}/{}".format(data_path,self.gen_name(model))
@@ -35,6 +35,8 @@ class ModelFactory:
     output_path = "{}/{}".format(data_path, name)
     try:
       os.makedirs(output_path)
+      os.makedirs(output_path + '/raw')
+      os.makedirs(output_path + '/float')
     except OSError as exc:
       if exc.errno == errno.EEXIST and os.path.isdir(data_path):
         print("Dataset {} exists, skipping generation".format(name))
@@ -49,8 +51,13 @@ class ModelFactory:
         print("Generating {} voxels for model {}".format(dataset_size, name))
         for i in tqdm(range(dataset_size)):
           model = self.init_model(compartments)
-          self.gen_voxel(model, "{}/{}.float".format(output_path, str(i)), log_file)
+          bfloat_path = "{}/raw/{}.Bfloat".format(output_path, str(i))
+          self.gen_voxel(model, "{}/raw/{}.Bfloat".format(output_path, str(i)), log_file)
+          self.convert_voxel(bfloat_path, "{}/float/{}.float".format(output_path, str(i)))
           self.write_params(model, param_file)
+
+  def convert_voxel(self, bfloat_path, output_path):
+    call("cat {} | {} > {}".format(bfloat_path, float2txt_path, output_path), shell=True)
 
   def gen_voxel(self, model, output_path, log):
     cmd = ["{} -synthmodel compartment {}".format(datasynth_path, len(model))]
@@ -59,8 +66,7 @@ class ModelFactory:
         cmd.append("{} {}".format(compartment, self.stringify_params_no_ivf(model, compartment)))
       else:
         cmd.append("{} {}".format(compartment, self.stringify_params(model, compartment)))
-    cmd.append("-schemefile {} -voxels 1".format(scheme_path))
-    cmd.append("| {} > {}".format(float2txt_path, output_path))
+    cmd.append("-schemefile {} -voxels 1 -snr {} > {}".format(scheme_path, signal_noise_ratio, output_path))
     call(" ".join(cmd), shell=True, stderr=log)
 
   def write_params(self, model, param_file):

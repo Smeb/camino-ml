@@ -3,7 +3,6 @@ import errno
 
 import pandas
 import matplotlib.pyplot as plt
-from altair import Axis, Chart, Text, X, Y, Color
 from sklearn import metrics
 from tqdm import tqdm
 

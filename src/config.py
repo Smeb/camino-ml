@@ -13,6 +13,7 @@ camino_compartments = {
   "dot": [],
 }
 
+
 definitions = {
   "d": [0.8E-9, 2.2E-9],
   "theta": 0.0,
@@ -42,3 +43,4 @@ models = [
 ]
 
 dataset_size = 12500
+signal_noise_ratio = 0

@@ -19,22 +19,25 @@ def compare_fnames(a, b):
   bName = int(os.path.splitext(b)[0])
   return 1 if aName > bName else 0 if aName == bName else -1
 
-def load_data(model, factory):
+def load_float_data(model, factory):
   name = factory.gen_name(model)
   path = factory.get_dataset_path(model)
+  float_path = path + "/float"
   feature_names = factory.get_param_names(model)
 
-  floatFiles = [filename for filename in os.listdir(path) if filename.endswith(".float")]
+  floatFiles = [filename for filename in os.listdir(float_path) if filename.endswith(".float")]
   floatFiles.sort(compare_fnames)
 
   vectors = [None] * len(floatFiles)
 
   for fname in floatFiles:
-    voxArray = np.genfromtxt("{}/{}".format(path, fname))
+    voxArray = np.genfromtxt("{}/{}".format(float_path, fname))
     voxNumber = int(filter(str.isdigit, fname))
     vectors[voxNumber] = voxArray.flatten()
   scaler = StandardScaler()
+
   ground_truth = np.genfromtxt("{}/{}.params".format(path, name))
+
   ground_truth = scaler.fit_transform(ground_truth)
   trainX, testX, trainY, testY = train_test_split(vectors, ground_truth, test_size=0.2)
   return ((scaler, (trainX, trainY), (testX, testY), feature_names), name)

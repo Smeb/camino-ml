@@ -2,13 +2,21 @@
 
 ## Installation
 
-Dependencies:
+### General Dependencies:
   - javac 1.7+
   - git
   - python2.7
 
+### Camino installation
 Run `make install`; you may need to call this with sudo depending on
 your operating system
+
+### Python installation
+- Make a virtualenv (you need pip for this)
+  - `virtualenv -p /usr/bin/python2.7 ml_research`
+  - the directory may be different depending on your OS
+- Activate the environment using source ml\_research/bin/activate (your prompt should change)
+- Install the requirements using pip install -r requirements.txt
 
 ## Makefile commands
 

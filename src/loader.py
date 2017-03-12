@@ -33,7 +33,8 @@ def load_float_data(model, factory):
   for fname in floatFiles:
     voxArray = np.genfromtxt("{}/{}".format(float_path, fname))
     voxNumber = int(filter(str.isdigit, fname))
-    vectors[voxNumber] = voxArray.flatten()
+    vectors[voxNumber] = voxArray.flatten().tolist()
+
   scaler = StandardScaler()
 
   ground_truth = np.genfromtxt("{}/{}.params".format(path, name))

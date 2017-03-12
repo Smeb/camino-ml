@@ -8,3 +8,4 @@ dist
 build
 *.pyc
 .Python
+ml_research

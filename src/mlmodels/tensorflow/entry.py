@@ -6,9 +6,10 @@ from tqdm import tqdm
 from src.routes import media_path
 from src.mlmodels.experiment import Experiment
 from .algorithms.train_cnv import train_cnv
+from .algorithms.recurrent_nn import train_recurrent_nn
 
 algorithms = [
-  ('ConvolutionalNN', train_cnv),
+  ('RecurrentNN', train_recurrent_nn),
 ]
 
 def gen_experiments(data, data_model):
@@ -28,7 +29,7 @@ def entry(data, data_model):
 
   experiments = gen_experiments(data, data_model)
   evaluations = []
-  exit()
+
   for experiment in experiments:
     test_Ys, predict_Ys = experiment.predict()
     evaluations.append((experiment, experiment.evaluate(test_Ys, predict_Ys)))

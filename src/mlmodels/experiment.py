@@ -45,4 +45,4 @@ class Experiment:
 
   def visualise(self, test_Ys, predict_Ys):
     _, _, _, feature_names = self.data
-    self.visualise_param_v_param(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)
+    visualise_param_v_param(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)

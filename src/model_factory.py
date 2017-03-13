@@ -46,7 +46,7 @@ def gen_model(compartments, position):
   with open("{}/{}.params".format(output_path, name), 'w') as param_file:
     with open("{}/{}.log".format(output_path, name), 'w') as log_file:
       print("Generating {} voxels for model {}".format(dataset_size, name))
-      for i in tqdm(range(dataset_size), position=position):
+      for i in tqdm(range(dataset_size), position=position, desc=" ".join(compartments)):
         model = init_model(compartments)
         bfloat_path = "{}/raw/{}.Bfloat".format(output_path, str(i))
         gen_voxel(model, "{}/raw/{}.Bfloat".format(output_path, str(i)), log_file)

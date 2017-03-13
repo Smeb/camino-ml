@@ -1,10 +1,10 @@
-from __future__ import print_function
+rom __future__ import print_function
 import os
 import errno
 
 from sklearn import metrics
 from src.routes import media_path
-from src.mlmodels.scikit_learn.visualisation import visualise_param_v_param, visualise_difference
+from src.mlmodels.scikit_learn.visualisation import visualise_param_v_param, visualise_bland_altman, visualise_difference
 
 class Experiment:
   def __init__(self, method_name, method, data, dataset_name):

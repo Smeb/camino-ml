@@ -4,11 +4,13 @@ import os
 import logging
 import time
 from subprocess import call, check_output
+import multiprocessing
 
+from joblib import Parallel, delayed
 from tqdm import tqdm
 
 from src.config import models, dataset_size
-from src.model_factory import ModelFactory
+from src.model_factory import gen_model
 from src.routes import data_path, datasynth_path, float2txt_path, scheme_path
 
 def generate():
@@ -20,19 +22,4 @@ def generate():
     else:
       raise
 
-  factory = ModelFactory()
-
-  logfile_path = "{}/{}.log".format(data_path, time.strftime("%Y_%m_%d-%H_%M_%S"))
-  logging.basicConfig(level=logging.INFO,
-    filename=logfile_path,
-    format='%(message)s',
-    filemode='a+')
-
-  logging.log(logging.INFO, 'Creating: {} datasets'.format(len(models)))
-
-  for model in models:
-    print('Generating {}'.format(model))
-    start = time.time()
-    name = factory.gen_model(model)
-    end = time.time()
-    logging.log(logging.INFO, '{0} {1} {2:.2}s'.format(name, dataset_size, end - start))
+  Parallel(n_jobs=-1)(delayed(gen_model)(model, i) for model, i in zip(models, range(len(models))))

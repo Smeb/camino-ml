@@ -3,6 +3,7 @@ import errno
 
 import pandas
 import matplotlib.pyplot as plt
+import numpy as np
 from sklearn import metrics
 from tqdm import tqdm
 
@@ -65,6 +66,55 @@ def visualise_param_v_param(test_Ys, predict_Ys, feature_names, method_name, dat
 
     plt.savefig('{}/{}-{}.png'.format(visualisation_path, method_name, feature))
     plt.clf()
+
+def visualise_bland_altman(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
+  visualisation_path = "{}/predicted_vs_actual".format(dataset_path)
+  try:
+    os.makedirs(visualisation_path)
+  except OSError as exc:
+    if exc.errno == errno.EEXIST and os.path.isdir(visualisation_path):
+      pass
+    else:
+      raise
+
+  chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
+  chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)
+
+  print('Generating {} comparison Bland-Altman plots'.format(method_name))
+  for feature in tqdm(feature_names):
+    x_features = np.array(chart_x[feature].tolist())
+    y_features = np.array(chart_y[feature].tolist())
+
+    mean      = np.mean([x_features, y_features], axis=0)
+    diff      = y_features - x_features                  # Difference between data1 and data2
+    md        = np.mean(diff)                   # Mean of the difference
+    sd        = np.std(diff, axis=0)            # Standard deviation of the difference
+
+
+    with np.errstate(divide='ignore', invalid='ignore'):
+      percentage_error = (diff/x_features)*100
+
+    with np.errstate(invalid='ignore'):
+      percentage_error[percentage_error > 50] = 50
+      percentage_error[percentage_error < -50] = -50
+
+    plt.scatter(mean, diff, c=percentage_error, edgecolors='face', cmap='jet')
+    plt.axhline(md,           color='gray', linestyle='--')
+    plt.axhline(md + 1.96*sd, color='gray', linestyle='--')
+    plt.axhline(md - 1.96*sd, color='gray', linestyle='--')
+    plt.ylabel('Difference')
+    plt.xlabel('Mean value')
+    plt.title(feature)
+    x_range = np.max(mean) - np.min(mean)
+    y_range = np.max(diff) - np.min(diff)
+    axis_extra_range = 0.1
+    plt.xlim([np.min(mean) - (x_range * axis_extra_range), np.max(mean) + (x_range * axis_extra_range)])
+    plt.ylim([np.min(diff) - (y_range * axis_extra_range), np.max(diff) + (y_range * axis_extra_range)])
+    plt.colorbar()
+
+    plt.savefig('{}/{}-{}-Bland-Altman.png'.format(visualisation_path, method_name, feature))
+    plt.clf()
+
 
 def visualise_evaluations(evaluations):
   return

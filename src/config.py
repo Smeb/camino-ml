@@ -43,4 +43,4 @@ models = [
 ]
 
 dataset_size = 12500
-signal_noise_ratio = 0
+signal_noise_ratio = 20

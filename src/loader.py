@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 from src.config import definitions, models
 from src.routes import data_path
-from src.model_factory import ModelFactory
+from src.model_factory import get_name, get_dataset_path
 
 def compare_fnames(a, b):
   """
@@ -19,9 +19,9 @@ def compare_fnames(a, b):
   bName = int(os.path.splitext(b)[0])
   return 1 if aName > bName else 0 if aName == bName else -1
 
-def load_float_data(model, factory):
-  name = factory.gen_name(model)
-  path = factory.get_dataset_path(model)
+def load_float_data(model):
+  name = get_name(model)
+  path = get_dataset_path(model)
   float_path = path + "/float"
   feature_names = factory.get_param_names(model)
 

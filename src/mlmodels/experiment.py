@@ -4,7 +4,7 @@ import errno
 
 from sklearn import metrics
 from src.routes import media_path
-from src.mlmodels.scikit_learn.visualisation import visualise_param_v_param, visualise_difference
+from src.mlmodels.scikit_learn.visualisation import visualise_param_v_param, visualise_bland_altman, visualise_difference
 
 class Experiment:
   def __init__(self, method_name, method, data, dataset_name):
@@ -46,3 +46,4 @@ class Experiment:
   def visualise(self, test_Ys, predict_Ys):
     _, _, _, feature_names = self.data
     self.visualise_param_v_param(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)
+    self.visualise_bland_altman(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)

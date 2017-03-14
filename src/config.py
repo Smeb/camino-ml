@@ -30,17 +30,17 @@ models = [
   # ['zeppelin'],
   # ['tensor'],
 
-  ['ball', 'stick'],
+  # ['ball', 'stick'],
   # ['ball', 'cylindergpd'],
-  # ['ball', 'gammadistribradiicylinders'],
+  ['ball', 'gammadistribradiicylinders'],
 
   # ['ball', 'stick', 'astrosticks'],
   # ['ball', 'stick', 'astrocylinders'],
   # ['ball', 'stick', 'spheregpd'],
-  # ['ball', 'stick', 'dot'],
+  ['ball', 'stick', 'dot'],
 
   # ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
 ]
 
 dataset_size = 12500
-signal_noise_ratio = 20
+signal_noise_ratio = 0

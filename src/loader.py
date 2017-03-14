@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 from src.config import definitions, models
 from src.routes import data_path
-from src.model_factory import get_name, get_dataset_path
+from src.model_factory import get_dataset_path, get_param_names, get_name
 
 def compare_fnames(a, b):
   """
@@ -23,7 +23,7 @@ def load_float_data(model):
   name = get_name(model)
   path = get_dataset_path(model)
   float_path = path + "/float"
-  feature_names = factory.get_param_names(model)
+  feature_names = get_param_names(model)
 
   floatFiles = [filename for filename in os.listdir(float_path) if filename.endswith(".float")]
   floatFiles.sort(compare_fnames)

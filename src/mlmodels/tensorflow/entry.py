@@ -5,11 +5,10 @@ from tqdm import tqdm
 
 from src.routes import media_path
 from src.mlmodels.experiment import Experiment
-from .algorithms.train_cnv import train_cnv
-from .algorithms.recurrent_nn import train_recurrent_nn
+from .algorithms.convolutional_nn import train_convolutional_nn
 
 algorithms = [
-  ('RecurrentNN', train_recurrent_nn),
+  ('ConvolutionalNN', train_convolutional_nn),
 ]
 
 def gen_experiments(data, data_model):

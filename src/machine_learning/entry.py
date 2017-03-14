@@ -4,7 +4,7 @@ import errno
 from tqdm import tqdm
 
 from src.routes import media_path
-from src.mlmodels.experiment import Experiment
+from .experiment import Experiment
 from .algorithms.random_forest import train_RF
 from .algorithms.knn import train_KNN
 from .algorithms.svr import train_linear_SVR

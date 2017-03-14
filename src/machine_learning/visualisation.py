@@ -1,13 +1,10 @@
-import os
-import errno
-
 import pandas
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn import metrics
 from tqdm import tqdm
 
-from src.routes import media_path
+from src.routes import make_path_ignoring_existing, media_path
 
 def best_fit(X, Y):
   xbar = sum(X) / len(X)
@@ -29,14 +26,8 @@ def calc_axis_limits(X, Y):
   return (min_xy - coord_diff, max_xy + coord_diff)
 
 def visualise_param_v_param(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
-  visualisation_path = "{}/predicted_vs_actual".format(dataset_path)
-  try:
-    os.makedirs(visualisation_path)
-  except OSError as exc:
-    if exc.errno == errno.EEXIST and os.path.isdir(visualisation_path):
-      pass
-    else:
-      raise
+  visualisation_path = "{}/{}/predicted_vs_actual".format(dataset_path, method_name)
+  make_path_ignoring_existing(visualisation_path)
 
   chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
   chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)
@@ -68,14 +59,8 @@ def visualise_param_v_param(test_Ys, predict_Ys, feature_names, method_name, dat
     plt.clf()
 
 def visualise_bland_altman(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
-  visualisation_path = "{}/predicted_vs_actual".format(dataset_path)
-  try:
-    os.makedirs(visualisation_path)
-  except OSError as exc:
-    if exc.errno == errno.EEXIST and os.path.isdir(visualisation_path):
-      pass
-    else:
-      raise
+  visualisation_path = "{}/{}/bland_altman".format(dataset_path, method_name)
+  make_path_ignoring_existing(visualisation_path)
 
   chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
   chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)

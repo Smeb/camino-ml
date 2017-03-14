@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 from src.config import definitions, models, strip
 from src.routes import data_path
-from src.model_factory import get_dataset_path, get_param_names, get_name
+from src.generation.model_factory import get_dataset_path, get_param_names, get_name
 
 def compare_fnames(a, b):
   """

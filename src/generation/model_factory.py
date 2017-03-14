@@ -8,8 +8,23 @@ from time import sleep
 
 from tqdm import tqdm
 
-from config import camino_compartments, definitions, dataset_size, signal_noise_ratio
-from routes import data_path, datasynth_path, float2txt_path, scheme_path
+from src.config import definitions, dataset_size, signal_noise_ratio
+from src.routes import data_path, datasynth_path, float2txt_path, scheme_path
+
+camino_compartments = {
+  "stick": ["d", "theta", "phi"],
+  "cylindergpd": ["d", "theta", "phi", "R"],
+  "gammadistribradiicylinders": ["k", "b", "d", "theta", "phi"],
+
+  "ball": ["d"],
+  "zeppelin": ["d", "theta", "phi", "d_perp1"],
+  "tensor": ["d", "theta", "phi", "d_perp1", "d_perp2", "alpha"],
+
+  "astrosticks": ["d"],
+  "astrocylinders": ["d", "R"],
+  "spheregpd": ["d", "Rs"],
+  "dot": [],
+}
 
 def get_name(compartments):
   return "".join(compartments) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)

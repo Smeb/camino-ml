@@ -1,19 +1,4 @@
-camino_compartments = {
-  "stick": ["d", "theta", "phi"],
-  "cylindergpd": ["d", "theta", "phi", "R"],
-  "gammadistribradiicylinders": ["k", "b", "d", "theta", "phi"],
-
-  "ball": ["d"],
-  "zeppelin": ["d", "theta", "phi", "d_perp1"],
-  "tensor": ["d", "theta", "phi", "d_perp1", "d_perp2", "alpha"],
-
-  "astrosticks": ["d"],
-  "astrocylinders": ["d", "R"],
-  "spheregpd": ["d", "Rs"],
-  "dot": [],
-}
-
-
+# Fixed values or ranges for parameters
 definitions = {
   "d": [0.8E-9, 2.2E-9],
   "theta": 0.0,
@@ -25,8 +10,10 @@ definitions = {
   "b": [0.8E-6, 1.4E-6],
 }
 
+# Parameters to filter out while learning
 strip = ["theta", "phi", "alpha"]
 
+# Declared models to generate and test on
 models = [
   # ['ball'],
   # ['zeppelin'],
@@ -44,5 +31,6 @@ models = [
   ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
 ]
 
+# Meta parameters for model generation
 dataset_size = 125
 signal_noise_ratio = 0

@@ -1,10 +1,10 @@
 import src.loader as loader
 import sys
 
-from src.gen_voxels import generate
+from src.generation.gen_voxels import generate
 from src.config import models
 from src.routes import config_file_path
-from src.mlmodels.entry import entry
+from src.machine_learning.entry import entry
 
 # Silences the deprecation warning from scikit
 def warn(*args, **kwargs):

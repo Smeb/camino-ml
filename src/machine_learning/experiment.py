@@ -3,13 +3,13 @@ import os
 import errno
 
 from sklearn import metrics
-from src.routes import media_path
-from src.mlmodels.visualisation import (
+
+from .visualisation import (
   visualise_param_v_param,
   visualise_bland_altman,
   visualise_difference,
-  bland_altmann
   )
+from src.routes import make_path_ignoring_existing, media_path
 
 class Experiment:
   def __init__(self, method_name, method, data, dataset_name):
@@ -26,13 +26,8 @@ class Experiment:
 
   def make_media_path(self):
     self.dataset_path = "{}/{}".format(media_path, self.dataset_name)
-    try:
-      os.makedirs(self.dataset_path)
-    except OSError as exc:
-      if exc.errno == errno.EEXIST and os.path.isdir(self.dataset_path):
-        pass
-      else:
-        raise
+    make_path_ignoring_existing(self.dataset_path)
+    open('{}/evaluation'.format(self.dataset_path), 'w').close()
 
   def evaluate(self, test_Y, predict_Y):
     mean_absolute_error = metrics.mean_absolute_error(test_Y, predict_Y)
@@ -51,4 +46,4 @@ class Experiment:
   def visualise(self, test_Ys, predict_Ys):
     _, _, _, feature_names = self.data
     visualise_param_v_param(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)
-    # bland_altmann(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)
+    visualise_bland_altman(test_Ys, predict_Ys, feature_names, self.method_name, self.dataset_path)

@@ -40,13 +40,14 @@ def load_float_data(model):
     vectors[voxNumber] = voxArray.flatten().tolist()
   ground_truth = np.genfromtxt("{}/{}.params".format(path, name))
 
+  # Somewhat horrible way of filtering out columns (since pandas
+  # rearranges columns to be alphabetically ordered)
   ground_truth = pandas.DataFrame(ground_truth, columns=feature_names)
   ground_truth = ground_truth[ground_truth.columns.difference(skip_list)]
-
   for item in skip_list:
     if item in feature_names:
       feature_names.pop(feature_names.index(item))
-
+  feature_names = ground_truth.columns.tolist()
 
   scaler = StandardScaler()
   ground_truth = scaler.fit_transform(ground_truth)

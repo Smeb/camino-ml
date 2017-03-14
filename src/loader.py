@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
-from src.config import definitions, models
+from src.config import definitions, models, strip
 from src.routes import data_path
 from src.model_factory import get_dataset_path, get_param_names, get_name
 
@@ -25,6 +25,10 @@ def load_float_data(model):
   float_path = path + "/float"
   feature_names = get_param_names(model)
 
+  skip_list = []
+  for compartment in model:
+    skip_list += ["{}_{}".format(compartment, item) for item in strip]
+
   floatFiles = [filename for filename in os.listdir(float_path) if filename.endswith(".float")]
   floatFiles.sort(compare_fnames)
 
@@ -34,11 +38,18 @@ def load_float_data(model):
     voxArray = np.genfromtxt("{}/{}".format(float_path, fname))
     voxNumber = int(filter(str.isdigit, fname))
     vectors[voxNumber] = voxArray.flatten().tolist()
-
-  scaler = StandardScaler()
-
   ground_truth = np.genfromtxt("{}/{}.params".format(path, name))
 
+  ground_truth = pandas.DataFrame(ground_truth, columns=feature_names)
+  ground_truth = ground_truth[ground_truth.columns.difference(skip_list)]
+
+  for item in skip_list:
+    if item in feature_names:
+      feature_names.pop(feature_names.index(item))
+
+
+  scaler = StandardScaler()
   ground_truth = scaler.fit_transform(ground_truth)
+
   trainX, testX, trainY, testY = train_test_split(vectors, ground_truth, test_size=0.2)
   return ((scaler, (trainX, trainY), (testX, testY), feature_names), name)

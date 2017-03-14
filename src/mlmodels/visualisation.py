@@ -22,6 +22,36 @@ def best_fit(X, Y):
 
   return a, b
 
+def bland_altmann(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
+  visualisation_path = "{}/bland_altmann".format(dataset_path)
+  try:
+    os.makedirs(visualisation_path)
+  except OSError as exc:
+    if exc.errno == errno.EEXIST and os.path.isdir(visualisation_path):
+      pass
+    else:
+      raise
+
+  chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
+  chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)
+
+  print('Generating {} bland_altmann'.format(method_name))
+  for feature in tqdm(feature_names):
+    x_features = np.asarray(chart_x[feature].tolist())
+    y_features = np.asarray(chart_y[feature].tolist())
+
+    mean = np.mean([x_features, y_features], axis=0)
+    diff = x_features - y_features
+    md = np.mean(diff)
+    sd = np.sd(diff, axis=0)
+
+    plt.scatter(mean, diff)
+    plt.axhline(md + 1.96 * std, color='gray', linestyle='-')
+    plt.axhline(md - 1.96 * std, color='gray', linestyle='-')
+
+    plt.savefig('{}/{}-{}.png'.format(visualisation_path, method_name, feature))
+    plt.clf()
+
 def calc_axis_limits(X, Y):
   min_xy = min(X + Y)
   max_xy = max(X + Y)

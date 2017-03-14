@@ -2,6 +2,7 @@ appdirs==1.4.3
 cycler==0.10.0
 funcsigs==1.0.2
 functools32==3.2.3.post2
+joblib==0.11
 Keras==1.2.2
 matplotlib==2.0.0
 mock==2.0.0

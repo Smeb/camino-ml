@@ -25,21 +25,23 @@ definitions = {
   "b": [0.8E-6, 1.4E-6],
 }
 
-models = [
-  # ['ball'],
-  # ['zeppelin'],
-  # ['tensor'],
+strip = ["theta", "phi", "alpha"]
 
-  # ['ball', 'stick'],
-  # ['ball', 'cylindergpd'],
+models = [
+  ['ball'],
+  ['zeppelin'],
+  ['tensor'],
+
+  ['ball', 'stick'],
+  ['ball', 'cylindergpd'],
   ['ball', 'gammadistribradiicylinders'],
 
-  # ['ball', 'stick', 'astrosticks'],
-  # ['ball', 'stick', 'astrocylinders'],
-  # ['ball', 'stick', 'spheregpd'],
+  ['ball', 'stick', 'astrosticks'],
+  ['ball', 'stick', 'astrocylinders'],
+  ['ball', 'stick', 'spheregpd'],
   ['ball', 'stick', 'dot'],
 
-  # ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
+  ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
 ]
 
 dataset_size = 12500

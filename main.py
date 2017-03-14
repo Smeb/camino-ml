@@ -4,7 +4,7 @@ import sys
 from src.gen_voxels import generate
 from src.config import models
 from src.routes import config_file_path
-from src.mlmodels.tensorflow.entry import entry
+from src.mlmodels.entry import entry
 
 # Silences the deprecation warning from scikit
 def warn(*args, **kwargs):
@@ -20,9 +20,12 @@ def usage():
   print "Models can be configured in src/config.py; compartment names"
   print "must match those in camino_compartments, which is defined in the same file"
 
+def all_models():
+  for model in models:
+    yield loader.load_float_data(model)
+
 def train_models():
-  datum = [loader.load_float_data(model) for model in models]
-  for data, data_model in datum:
+  for data, data_model in all_models():
     print("Training {}".format(data_model))
     entry(data, data_model)
 

@@ -5,19 +5,21 @@ from tqdm import tqdm
 
 from src.routes import media_path
 from src.mlmodels.experiment import Experiment
-from .algorithms.random_forest import trainRF
-from .algorithms.knn import trainKNN
-from .algorithms.svr import trainEpsilonSVR, trainLinearSVR, trainNuSVR
-from .algorithms.neural_nets import trainMLP
-from .algorithms.ridge_regression import trainRidge
+from .algorithms.random_forest import train_RF
+from .algorithms.knn import train_KNN
+from .algorithms.svr import train_linear_SVR
+from .algorithms.multilayer_perceptron import train_MLP
+from .algorithms.ridge_regression import train_ridge
+from .algorithms.convolutional_nn import train_convolutional_nn
 from .visualisation import visualise_evaluations
 
 algorithms = [
-  ('RandomForest', trainRF),
-  ('MultiLayerPerceptron', trainMLP),
-  ('linearSVR', trainLinearSVR),
-  ('KNN', trainKNN),
-  ('RidgeRegression', trainRidge)
+  ('RandomForest', train_RF),
+  ('MultiLayerPerceptron', train_MLP),
+  ('linearSVR', train_linear_SVR),
+  ('KNN', train_KNN),
+  ('RidgeRegression', train_ridge),
+  ('ConvolutionalNN', train_convolutional_nn),
 ]
 
 def gen_experiments(data, data_model):

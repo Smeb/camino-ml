@@ -1,11 +1,9 @@
 .DS_STORE
 /media
+/data/
 **/__pycache__/**
-**/data/**
-**/data_bak/**
 ml_experiments.egg-info/**
-dist
-build
 *.pyc
 .Python
 ml_research
+src/config.py

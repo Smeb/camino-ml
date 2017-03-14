@@ -12,7 +12,7 @@ Run `make install`; you may need to call this with sudo depending on
 your operating system
 
 ### Python installation
-- Make a virtualenv (you need pip for this)
+- Initialise a virtual environment (you need pip for this)
   - `virtualenv -p /usr/bin/python2.7 ml_research`
   - the directory may be different depending on your OS
 - Activate the environment using source ml\_research/bin/activate (your prompt should change)
@@ -28,9 +28,9 @@ your operating system
 - `clean` : Deletes all files installed by the program
 
 ## Configuration
-
-Configurations for voxel generation are defined in the
-[config.py](./src/config.py) file.
+Configurations for voxel generation and training are defined in the
+_config.py_ file. An example is given in [config.py.example](./src/config.py.example)
+### Models
 Each configuration is a list of strings in the models list, i.e:
 
 ```
@@ -39,20 +39,32 @@ models = [
 ]
 ```
 
+### Meta-parameters
 The number of voxels to generate can also be set
 
 ```
 dataset_size = 12500
 ```
 
-The values supplied for a parameter can either be a numerical value, or a list
-of two values. If two values are given, a sample will be taken
+As well as the signal to noise ratio
+
+```
+signal_to_noise = 20
+```
+
+The values supplied for a parameter can either be a single number value, or a list
+with two values. If two values are given, a sample will be taken
 in the range provided using uniform sampling.
 
+### Filtering
+To filter out parameters you can define a list of parameters to strip
+from the training data
+
+```
+strip = ["theta", "phi", "alpha"]
+```
 ## Notes on running
-If running on a mac, it is suggested to use `caffeinate -i`, i.e:
+If running on a mac, it is suggested to use `caffeinate -i`, so that the
+mac won't sleep until the tasks are completed:
 
 `caffeinate -i python main.py generate && caffeinate -i python main.py train-all`
-
-This way the mac will not sleep until the generation and training is
-completed.

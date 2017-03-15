@@ -1,8 +1,8 @@
-import src.loader as loader
 import sys
 
 from src.generation.gen_voxels import generate
 from src.config import models
+from src.dataset import Dataset
 from src.routes import config_file_path
 from src.machine_learning.entry import entry
 
@@ -22,12 +22,12 @@ def usage():
 
 def all_models():
   for model in models:
-    yield loader.load_float_data(model)
+    yield Dataset.from_model(model)
 
 def train_models():
-  for data, data_model in all_models():
-    print("Training {}".format(data_model))
-    entry(data, data_model)
+  for dataset in all_models():
+    print("Training {}".format(dataset.name))
+    entry(dataset)
 
 if __name__ == "__main__":
   if len(sys.argv) < 2:

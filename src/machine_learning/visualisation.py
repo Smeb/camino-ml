@@ -25,15 +25,15 @@ def calc_axis_limits(X, Y):
   coord_diff = 1 if max_xy == 0 else max_xy * 0.1
   return (min_xy - coord_diff, max_xy + coord_diff)
 
-def visualise_param_v_param(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
+def visualise_param_v_param(dataset, predict_Y, method_name, dataset_path):
   visualisation_path = "{}/{}/predicted_vs_actual".format(dataset_path, method_name)
   make_path_ignoring_existing(visualisation_path)
 
-  chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
-  chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)
+  chart_x = pandas.DataFrame(dataset.test_Y, columns=dataset.feature_names)
+  chart_y = pandas.DataFrame(predict_Y, columns=dataset.feature_names)
 
   print('Generating {} comparison graphs X_actual vs X_predicted'.format(method_name))
-  for feature in tqdm(feature_names):
+  for feature in tqdm(dataset.feature_names):
     x_features = chart_x[feature].tolist()
     y_features = chart_y[feature].tolist()
 
@@ -58,12 +58,12 @@ def visualise_param_v_param(test_Ys, predict_Ys, feature_names, method_name, dat
     plt.savefig('{}/{}-{}.png'.format(visualisation_path, method_name, feature))
     plt.clf()
 
-def visualise_bland_altman(test_Ys, predict_Ys, feature_names, method_name, dataset_path):
+def visualise_bland_altman(test_Y, predict_Y, feature_names, method_name, dataset_path):
   visualisation_path = "{}/{}/bland_altman".format(dataset_path, method_name)
   make_path_ignoring_existing(visualisation_path)
 
-  chart_x = pandas.DataFrame(test_Ys, columns=feature_names)
-  chart_y = pandas.DataFrame(predict_Ys, columns=feature_names)
+  chart_x = pandas.DataFrame(test_Y, columns=feature_names)
+  chart_y = pandas.DataFrame(predict_Y, columns=feature_names)
 
   print('Generating {} comparison Bland-Altman plots'.format(method_name))
   for feature in tqdm(feature_names):

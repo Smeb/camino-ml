@@ -49,4 +49,5 @@ def load_float_data(model):
   ground_truth = scaler.fit_transform(ground_truth)
 
   trainX, testX, trainY, testY = train_test_split(vectors, ground_truth, test_size=0.2)
-  return ((scaler, (trainX, trainY), (testX, testY), feature_names), name)
+
+  return scaler, trainX, trainY, testX, testY, feature_names, name

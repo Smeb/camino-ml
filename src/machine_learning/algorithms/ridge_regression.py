@@ -1,7 +1,6 @@
 from sklearn.linear_model import Ridge
-def train_ridge(data):
-  _, (trainX, trainY), _, _ = data
+def train_ridge(dataset):
   ridge_regressor = Ridge()
-  ridge_regressor.fit(trainX, trainY)
+  ridge_regressor.fit(dataset.train_X, dataset.train_Y)
   return ridge_regressor
 

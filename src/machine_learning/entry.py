@@ -4,7 +4,9 @@ import errno
 from tqdm import tqdm
 
 from src.routes import make_path_ignoring_existing, media_path
+
 from .experiment import Experiment
+from .model import Model
 from .algorithms.random_forest import train_RF
 from .algorithms.knn import train_KNN
 from .algorithms.svr import train_linear_SVR
@@ -28,7 +30,7 @@ algorithms = [
 def gen_experiments(dataset):
   experiments = []
   for function_name, function, kwargs in tqdm(algorithms):
-    experiments.append(Experiment(function_name, function, dataset, kwargs))
+    experiments.append(Experiment(Model(function_name, function, dataset, kwargs), dataset))
   return experiments
 
 def entry(dataset):
@@ -38,9 +40,8 @@ def entry(dataset):
 
   evaluations = []
   for experiment in experiments:
-    test_Ys, predict_Ys = experiment.predict()
-    evaluations.append((experiment, experiment.evaluate(test_Ys, predict_Ys)))
-    experiment.visualise(test_Ys, predict_Ys)
+    experiment.evaluate()
+    experiment.visualise()
 
 def evaluate_all(datum):
   evaluations = []

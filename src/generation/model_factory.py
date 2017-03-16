@@ -26,11 +26,11 @@ camino_compartments = {
   "dot": [],
 }
 
-def get_name(compartments):
+def get_model_name(compartments):
   return "".join(compartments) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)
 
 def get_dataset_path(model):
-  return "{}/{}".format(data_path, get_name(model))
+  return "{}/{}".format(data_path, get_model_name(model))
 
 def get_param_names(model):
   param_names = []
@@ -43,7 +43,7 @@ def get_param_names(model):
   return param_names
 
 def gen_model(compartments, position):
-  name = get_name(compartments)
+  name = get_model_name(compartments)
   output_path = "{}/{}".format(data_path, name)
   try:
     os.makedirs(output_path)

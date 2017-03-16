@@ -7,6 +7,9 @@ generate:
 train-all:
 	python main.py train-all
 
+fit-all:
+	python main.py fit-all
+
 clean:
 	rm -rf dist build data __pycache__
 

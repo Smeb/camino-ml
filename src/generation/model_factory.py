@@ -11,10 +11,18 @@ from tqdm import tqdm
 from src.config import definitions, dataset_size, signal_noise_ratio
 from src.routes import data_path, datasynth_path, float2txt_path, scheme_path
 
+# Datasynth uses different names than modelfit; the modelfit names are
+# shorter so we prefer modelfit names
+compartment_map = {
+  'gdrcylinders': 'gammadistribradiicylinders',
+  'cylinder': 'cylindergpd',
+  'sphere': 'spheregpd',
+}
+
 camino_compartments = {
   "stick": ["d", "theta", "phi"],
-  "cylindergpd": ["d", "theta", "phi", "R"],
-  "gammadistribradiicylinders": ["k", "b", "d", "theta", "phi"],
+  "cylinder": ["d", "theta", "phi", "R"],
+  "gdrcylinders": ["k", "b", "d", "theta", "phi"],
 
   "ball": ["d"],
   "zeppelin": ["d", "theta", "phi", "d_perp1"],
@@ -22,7 +30,7 @@ camino_compartments = {
 
   "astrosticks": ["d"],
   "astrocylinders": ["d", "R"],
-  "spheregpd": ["d", "Rs"],
+  "sphere": ["d", "Rs"],
   "dot": [],
 }
 
@@ -74,10 +82,14 @@ def convert_voxel(bfloat_path, output_path):
 def gen_voxel(model, output_path, log):
   cmd = ["{} -synthmodel compartment {}".format(datasynth_path, len(model))]
   for index, compartment in enumerate(model):
+    compartment_name = compartment
+    if compartment.lower() in compartment_map:
+      compartment_name = compartment_map[compartment.lower()]
+
     if len(model) - 1 == index:
-      cmd.append("{} {}".format(compartment, stringify_params_no_ivf(model, compartment)))
+      cmd.append("{} {}".format(compartment_name, stringify_params_no_ivf(model, compartment)))
     else:
-      cmd.append("{} {}".format(compartment, stringify_params(model, compartment)))
+      cmd.append("{} {}".format(compartment_name, stringify_params(model, compartment)))
   cmd.append("-schemefile {} -voxels 1 -snr {} > {}".format(scheme_path, signal_noise_ratio, output_path))
   call(" ".join(cmd), shell=True, stderr=log)
 

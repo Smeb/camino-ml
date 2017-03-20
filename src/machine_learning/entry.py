@@ -12,7 +12,7 @@ from .algorithms.knn import train_KNN
 from .algorithms.svr import train_linear_SVR
 from .algorithms.multilayer_perceptron import train_MLP
 from .algorithms.ridge_regression import train_ridge
-from .algorithms.convolutional_nn import search_convolutional_nn
+from .algorithms.convolutional_nn import initialise_nn_grid_search, search_convolutional_nn
 from .visualisation import visualise_evaluations
 
 algorithms = [
@@ -21,11 +21,7 @@ algorithms = [
     # ('linearSVR', train_linear_SVR, {}),
     # ('KNN', train_KNN, {}),
     # ('RidgeRegression', train_ridge, {}),
-    # ('ConvolutionalNN_1_1', search_convolutional_nn, {
-    #   'neurons': [13, 13],
-    #   'n_hidden_layers': 1,
-    # }),
-]
+] #+ initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
 
 def gen_experiments(dataset):
   experiments = []

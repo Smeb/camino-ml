@@ -2,7 +2,7 @@ import sys
 
 from src.generation.gen_voxels import generate
 from src.config import models
-from src.fit_models import fit_model_voxels
+from src.fit_models import fit_all
 from src.dataset import Dataset
 from src.routes import config_file_path
 from src.machine_learning.entry import entry
@@ -29,10 +29,6 @@ def train_models():
   for dataset in all_models():
     print("Training {}".format(dataset.name))
     entry(dataset)
-
-def fit_all():
-  for model in models:
-    fit_model_voxels(model)
 
 if __name__ == "__main__":
   if len(sys.argv) < 2:

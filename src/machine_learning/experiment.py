@@ -7,7 +7,7 @@ from sklearn import metrics
 
 from src.config import uuid
 from src.routes import make_path_ignoring_existing, media_path
-from .visualisation import (
+from src.visualisation.visualisation import (
   visualise_param_v_param,
   visualise_bland_altman,
   visualise_difference,
@@ -59,7 +59,6 @@ class Experiment:
     df.to_csv(self.results_path)
 
   def visualise(self):
-    return
     visualise_param_v_param(self.unscaled_test_Y,
       self.unscaled_predict_Y,
       self.test_dataset.feature_names,

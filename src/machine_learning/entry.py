@@ -3,6 +3,8 @@ import errno
 
 from tqdm import tqdm
 
+from src.config import models
+from src.dataset import Dataset
 from src.routes import make_path_ignoring_existing, media_path
 
 from .experiment import Experiment
@@ -13,15 +15,18 @@ from .algorithms.svr import train_linear_SVR
 from .algorithms.multilayer_perceptron import train_MLP
 from .algorithms.ridge_regression import train_ridge
 from .algorithms.convolutional_nn import initialise_nn_grid_search, search_convolutional_nn
-from .visualisation import visualise_evaluations
 
 algorithms = [
-    # ('RandomForest', train_RF, {}),
-    # ('MultiLayerPerceptron', train_MLP, {}),
-    # ('linearSVR', train_linear_SVR, {}),
-    # ('KNN', train_KNN, {}),
-    # ('RidgeRegression', train_ridge, {}),
-] + initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
+    ('RandomForest', train_RF, {}),
+    ('MultiLayerPerceptron', train_MLP, {}),
+    ('linearSVR', train_linear_SVR, {}),
+    ('KNN', train_KNN, {}),
+    ('RidgeRegression', train_ridge, {}),
+]# + initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
+
+def all_datasets():
+  for model in models:
+    yield Dataset.from_model(model)
 
 def gen_experiments(dataset):
   experiments = []
@@ -29,20 +34,11 @@ def gen_experiments(dataset):
     experiments.append(Experiment(Model(function_name, function, dataset, kwargs), dataset))
   return experiments
 
-def entry(dataset):
+def train_and_evaluate_all_datasets():
   make_path_ignoring_existing(media_path)
 
-  experiments = gen_experiments(dataset)
-
-  evaluations = []
-  for experiment in experiments:
-    experiment.evaluate()
-    experiment.visualise()
-
-def evaluate_all(datum):
-  evaluations = []
-  for data, data_model in datum:
-    experiments = gen_experiments(data, data_model)
+  for dataset in all_datasets():
+    experiments = gen_experiments(dataset)
     for experiment in experiments:
-      evaluations.append((experiment, experiment.evaluate()))
-  visualise_evaluations(evaluations)
+      experiment.evaluate()
+      experiment.visualise()

@@ -60,7 +60,7 @@ camino_fits = [
 
 camino_fits = [model.lower() for model in camino_fits]
 
-def fit_all():
+def fit_all_models():
   Parallel(n_jobs=-1)(delayed(fit_model_voxels)(model, i) for model, i in zip(models, range(len(models))))
 
 def fit_model_voxels(model, position):

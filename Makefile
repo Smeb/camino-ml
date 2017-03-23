@@ -10,6 +10,9 @@ train-all:
 fit-all:
 	python main.py fit-all
 
+visualise:
+	python main.py visualise
+
 clean:
 	rm -rf dist build data __pycache__
 

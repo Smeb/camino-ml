@@ -23,3 +23,15 @@ class Dataset:
   def from_model(cls, model):
     scaler, train_X, train_Y, test_X, test_Y, feature_names, name = load_float_data(model)
     return cls(model, scaler, train_X, train_Y, test_X, test_Y, feature_names, name)
+
+  @staticmethod
+  def str_get_name(model):
+    return model.split('_')[0]
+
+  @staticmethod
+  def str_get_noise(model):
+    return model.split('_')[1]
+
+  @staticmethod
+  def str_get_n_voxels(model):
+    return model.split('_')[2]

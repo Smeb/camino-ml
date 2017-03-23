@@ -69,3 +69,12 @@ class Experiment:
       self.unscaled_predict_Y,
       self.test_dataset.feature_names,
       self.model.name, self.media_path)
+
+
+  @staticmethod
+  def dir_train_name(dirname):
+    return dirname.split('-')[0]
+
+  @staticmethod
+  def dir_test_name(dirname):
+    return dirname.split('-')[1]

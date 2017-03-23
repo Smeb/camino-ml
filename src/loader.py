@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 from src.config import definitions, models, strip
 from src.routes import data_path
-from src.generation.model_factory import get_dataset_path, get_param_names, get_name
+from src.generation.model_factory import get_dataset_path, get_param_names, get_model_name
 
 def compare_fnames(a, b):
   """
@@ -20,7 +20,7 @@ def compare_fnames(a, b):
   return 1 if aName > bName else 0 if aName == bName else -1
 
 def load_float_data(model):
-  name = get_name(model)
+  name = get_model_name(model)
   path = get_dataset_path(model)
   float_path = path + "/float"
   feature_names = get_param_names(model)
@@ -29,7 +29,7 @@ def load_float_data(model):
   for compartment in model:
     skip_list += ["{}_{}".format(compartment, item) for item in strip]
 
-  floatFiles = [filename for filename in os.listdir(float_path) if filename.endswith(".float")]
+  floatFiles = [filename for filename in os.listdir(float_path)]
   floatFiles.sort(compare_fnames)
 
   vectors = [None] * len(floatFiles)
@@ -49,4 +49,5 @@ def load_float_data(model):
   ground_truth = scaler.fit_transform(ground_truth)
 
   trainX, testX, trainY, testY = train_test_split(vectors, ground_truth, test_size=0.2)
-  return ((scaler, (trainX, trainY), (testX, testY), feature_names), name)
+
+  return scaler, trainX, trainY, testX, testY, feature_names, name

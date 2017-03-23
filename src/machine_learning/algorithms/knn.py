@@ -1,6 +1,5 @@
 from sklearn import neighbors
-def train_KNN(data):
-  _, (trainX, trainY), _, _ = data
+def train_KNN(dataset):
   knn = neighbors.KNeighborsRegressor(weights="distance")
-  knn.fit(trainX, trainY)
+  knn.fit(dataset.train_X, dataset.train_Y)
   return knn

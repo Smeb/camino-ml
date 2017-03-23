@@ -1,7 +1,6 @@
 from sklearn.neural_network import MLPRegressor
 
-def train_MLP(data):
-  scaler, (trainX, trainY), (testX, testY), _ = data
+def train_MLP(dataset):
   mlp = MLPRegressor()
-  mlp.fit(trainX, trainY)
+  mlp.fit(dataset.train_X, dataset.train_Y)
   return mlp

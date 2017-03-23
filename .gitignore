@@ -1,6 +1,6 @@
 .DS_STORE
 /media
-/data/
+/data*/
 **/__pycache__/**
 ml_experiments.egg-info/**
 *.pyc

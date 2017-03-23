@@ -11,10 +11,18 @@ from tqdm import tqdm
 from src.config import definitions, dataset_size, signal_noise_ratio
 from src.routes import data_path, datasynth_path, float2txt_path, scheme_path
 
+# Datasynth uses different names than modelfit; the modelfit names are
+# shorter so we prefer modelfit names
+compartment_map = {
+  'gdrcylinders': 'gammadistribradiicylinders',
+  'cylinder': 'cylindergpd',
+  'sphere': 'spheregpd',
+}
+
 camino_compartments = {
   "stick": ["d", "theta", "phi"],
-  "cylindergpd": ["d", "theta", "phi", "R"],
-  "gammadistribradiicylinders": ["k", "b", "d", "theta", "phi"],
+  "cylinder": ["d", "theta", "phi", "R"],
+  "gdrcylinders": ["k", "b", "d", "theta", "phi"],
 
   "ball": ["d"],
   "zeppelin": ["d", "theta", "phi", "d_perp1"],
@@ -22,15 +30,15 @@ camino_compartments = {
 
   "astrosticks": ["d"],
   "astrocylinders": ["d", "R"],
-  "spheregpd": ["d", "Rs"],
+  "sphere": ["d", "Rs"],
   "dot": [],
 }
 
-def get_name(compartments):
+def get_model_name(compartments):
   return "".join(compartments) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)
 
 def get_dataset_path(model):
-  return "{}/{}".format(data_path, get_name(model))
+  return "{}/{}".format(data_path, get_model_name(model))
 
 def get_param_names(model):
   param_names = []
@@ -43,7 +51,8 @@ def get_param_names(model):
   return param_names
 
 def gen_model(compartments, position):
-  name = get_name(compartments)
+  compartments = [compartment.lower() for compartment in compartments]
+  name = get_model_name(compartments)
   output_path = "{}/{}".format(data_path, name)
   try:
     os.makedirs(output_path)
@@ -74,10 +83,14 @@ def convert_voxel(bfloat_path, output_path):
 def gen_voxel(model, output_path, log):
   cmd = ["{} -synthmodel compartment {}".format(datasynth_path, len(model))]
   for index, compartment in enumerate(model):
+    compartment_name = compartment
+    if compartment in compartment_map:
+      compartment_name = compartment_map[compartment]
+
     if len(model) - 1 == index:
-      cmd.append("{} {}".format(compartment, stringify_params_no_ivf(model, compartment)))
+      cmd.append("{} {}".format(compartment_name, stringify_params_no_ivf(model, compartment)))
     else:
-      cmd.append("{} {}".format(compartment, stringify_params(model, compartment)))
+      cmd.append("{} {}".format(compartment_name, stringify_params(model, compartment)))
   cmd.append("-schemefile {} -voxels 1 -snr {} > {}".format(scheme_path, signal_noise_ratio, output_path))
   call(" ".join(cmd), shell=True, stderr=log)
 

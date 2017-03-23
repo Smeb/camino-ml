@@ -5,6 +5,7 @@ import errno
 import pandas
 from sklearn import metrics
 
+from src.config import uuid
 from src.routes import make_path_ignoring_existing, media_path
 from .visualisation import (
   visualise_param_v_param,
@@ -21,26 +22,31 @@ class Experiment:
     self.unscaled_predict_Y = self.model.train_dataset.inverse_transform(self.model.predict(test_dataset.test_X))
     self.unscaled_test_Y = self.model.train_dataset.inverse_transform(test_dataset.test_Y)
 
+    self.media_path = '{}/{}-{}'.format(media_path, self.model.train_dataset.name, self.test_dataset.name)
     self.make_media_path()
 
+
   def make_media_path(self):
-    self.media_path = '{}/{}-{}'.format(media_path, self.model.train_dataset.name, self.test_dataset.name)
     make_path_ignoring_existing(self.media_path)
 
-  def results_dataframe(self):
-    if self.df:
-      return self.df
-    self.df = pandas.DataFrame(
-      columns=['algorithm',
-      'mean_absolute_error',
-      'mean_squared_error',
-      'r2_score'] + self.test_dataset.feature_names)
-    return self.df
+  def get_results_dataframe(self):
+    self.results_path = '{}/results.csv'.format(self.media_path)
+    if os.path.isfile(self.results_path):
+      return pandas.DataFrame.from_csv(self.results_path)
+    else:
+      return pandas.DataFrame(
+        columns=['uuid',
+        'algorithm',
+        'mean_absolute_error',
+        'mean_squared_error',
+        'r2_score'] + self.test_dataset.feature_names)
+      self.df.to_csv(self.results_path)
 
   def evaluate(self):
-    df = self.results_dataframe
+    df = self.get_results_dataframe()
 
-    row = [self.model.name]
+
+    row = [uuid, self.model.name]
     row.append(metrics.mean_absolute_error(self.unscaled_test_Y, self.unscaled_predict_Y))
     row.append(metrics.mean_squared_error(self.unscaled_test_Y, self.unscaled_predict_Y))
     row.append(metrics.r2_score(self.unscaled_test_Y, self.unscaled_predict_Y))
@@ -49,8 +55,11 @@ class Experiment:
       row.append(metrics.r2_score(self.unscaled_test_Y[param],
         self.unscaled_predict_Y[param]))
 
+    df.loc[len(df)] = row
+    df.to_csv(self.results_path)
 
   def visualise(self):
+    return
     visualise_param_v_param(self.unscaled_test_Y,
       self.unscaled_predict_Y,
       self.test_dataset.feature_names,

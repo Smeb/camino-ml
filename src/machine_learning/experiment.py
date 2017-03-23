@@ -2,14 +2,15 @@ from __future__ import print_function
 import os
 import errno
 
+import pandas
 from sklearn import metrics
 
+from src.routes import make_path_ignoring_existing, media_path
 from .visualisation import (
   visualise_param_v_param,
   visualise_bland_altman,
   visualise_difference,
   )
-from src.routes import make_path_ignoring_existing, media_path
 
 class Experiment:
   def __init__(self, model, test_dataset):
@@ -23,37 +24,40 @@ class Experiment:
     self.make_media_path()
 
   def make_media_path(self):
-    self.dataset_path = "{}/{}".format(media_path, self.test_dataset.name)
-    make_path_ignoring_existing(self.dataset_path)
-    open('{}/evaluation.txt'.format(self.dataset_path), 'w+').close()
+    self.media_path = '{}/{}-{}'.format(media_path, self.model.train_dataset.name, self.test_dataset.name)
+    make_path_ignoring_existing(self.media_path)
+
+  def results_dataframe(self):
+    if self.df:
+      return self.df
+    self.df = pandas.DataFrame(
+      columns=['algorithm',
+      'mean_absolute_error',
+      'mean_squared_error',
+      'r2_score'] + self.test_dataset.feature_names)
+    return self.df
 
   def evaluate(self):
-    global_mean_absolute_error = metrics.mean_absolute_error(self.unscaled_test_Y, self.unscaled_predict_Y)
-    global_mean_squared_error = metrics.mean_squared_error(self.unscaled_test_Y, self.unscaled_predict_Y)
-    global_r2_score = metrics.r2_score(self.unscaled_test_Y, self.unscaled_predict_Y)
+    df = self.results_dataframe
 
-    param_r2 = {}
+    row = [self.model.name]
+    row.append(metrics.mean_absolute_error(self.unscaled_test_Y, self.unscaled_predict_Y))
+    row.append(metrics.mean_squared_error(self.unscaled_test_Y, self.unscaled_predict_Y))
+    row.append(metrics.r2_score(self.unscaled_test_Y, self.unscaled_predict_Y))
+
     for param in self.test_dataset.feature_names:
-      param_r2[param] = metrics.r2_score(self.unscaled_test_Y[param],
-        self.unscaled_predict_Y[param])
+      row.append(metrics.r2_score(self.unscaled_test_Y[param],
+        self.unscaled_predict_Y[param]))
 
-    with open('{}/evaluation.txt'.format(self.dataset_path), 'a+') as f:
-      print(self.model.name, file=f)
-      print('Mean absolute error: {}'.format(global_mean_absolute_error), file=f)
-      print('Mean squared error: {}'.format(global_mean_squared_error), file=f)
-      print('r2 score: {}'.format(global_r2_score), file=f)
-      print(param_r2, file=f)
-      print(file=f)
 
   def visualise(self):
     visualise_param_v_param(self.unscaled_test_Y,
       self.unscaled_predict_Y,
       self.test_dataset.feature_names,
       self.model.name,
-      self.dataset_path)
+      self.media_path)
 
     visualise_bland_altman(self.unscaled_test_Y,
       self.unscaled_predict_Y,
       self.test_dataset.feature_names,
-      self.model.name,
-      self.dataset_path)
+      self.model.name, self.media_path)

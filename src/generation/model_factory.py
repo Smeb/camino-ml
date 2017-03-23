@@ -51,6 +51,7 @@ def get_param_names(model):
   return param_names
 
 def gen_model(compartments, position):
+  compartments = [compartment.lower() for compartment in compartments]
   name = get_model_name(compartments)
   output_path = "{}/{}".format(data_path, name)
   try:
@@ -83,8 +84,8 @@ def gen_voxel(model, output_path, log):
   cmd = ["{} -synthmodel compartment {}".format(datasynth_path, len(model))]
   for index, compartment in enumerate(model):
     compartment_name = compartment
-    if compartment.lower() in compartment_map:
-      compartment_name = compartment_map[compartment.lower()]
+    if compartment in compartment_map:
+      compartment_name = compartment_map[compartment]
 
     if len(model) - 1 == index:
       cmd.append("{} {}".format(compartment_name, stringify_params_no_ivf(model, compartment)))

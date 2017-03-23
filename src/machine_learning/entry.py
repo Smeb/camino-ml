@@ -16,12 +16,12 @@ from .algorithms.convolutional_nn import initialise_nn_grid_search, search_convo
 from .visualisation import visualise_evaluations
 
 algorithms = [
-    ('RandomForest', train_RF, {}),
+    # ('RandomForest', train_RF, {}),
     # ('MultiLayerPerceptron', train_MLP, {}),
     # ('linearSVR', train_linear_SVR, {}),
     # ('KNN', train_KNN, {}),
     # ('RidgeRegression', train_ridge, {}),
-] #+ initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
+] + initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
 
 def gen_experiments(dataset):
   experiments = []

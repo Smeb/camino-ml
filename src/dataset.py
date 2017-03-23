@@ -1,3 +1,5 @@
+import pandas
+
 from src.loader import load_float_data
 
 class Dataset:
@@ -15,7 +17,7 @@ class Dataset:
     self.feature_names = feature_names
 
   def inverse_transform(self, vector):
-    return self.scaler.inverse_transform(vector)
+    return pandas.DataFrame(self.scaler.inverse_transform(vector), columns=self.feature_names)
 
   @classmethod
   def from_model(cls, model):

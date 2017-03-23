@@ -6,19 +6,6 @@ from tqdm import tqdm
 
 from src.routes import make_path_ignoring_existing, media_path
 
-def best_fit(X, Y):
-  xbar = sum(X) / len(X)
-  ybar = sum(Y) / len(Y)
-  n = len(X)
-
-  numer = sum([xi*yi for xi, yi in zip(X, Y)]) - n * xbar * ybar
-  denum = sum([xi**2 for xi in X]) - n * xbar**2
-
-  b = numer / denum
-  a = ybar - b * xbar
-
-  return a, b
-
 def calc_axis_limits(X, Y):
   min_xy = min(X + Y)
   max_xy = max(X + Y)
@@ -45,15 +32,7 @@ def visualise_param_v_param(test_Y, predict_Y, feature_names, algorithm_name, da
     plt.xlim(axis_limits)
 
     plt.scatter(x_features, y_features)
-
-    # plot line of best fit
-    try:
-      if axis_limits[0] != -1 and axis_limits[1] != 1:
-        a, b = best_fit(x_features, y_features)
-        yfit = [a + b * xi for xi in x_features]
-        plt.plot(x_features, yfit)
-    except:
-      pass
+    plt.plot(axis_limits, axis_limits, label="actual = predicted")
 
     plt.savefig('{}/{}-{}.png'.format(visualisation_path, algorithm_name, feature))
     plt.clf()

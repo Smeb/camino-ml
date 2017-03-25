@@ -1,3 +1,4 @@
+import re
 import numpy
 import matplotlib.pyplot as plt
 
@@ -21,7 +22,10 @@ def heatmap(data, metric):
   ax.invert_yaxis()
   ax.xaxis.tick_top()
 
-  labels = [data.columns]
+  # Trim id values from models
+  regex = re.compile(r"-[0-9]")
+  labels = [re.sub(regex, "", label) for label in data.columns]
+
   ax.set_xticklabels(data.columns, minor=False)
   ax.set_yticklabels(data.index, minor=False)
 

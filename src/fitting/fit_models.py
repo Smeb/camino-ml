@@ -58,18 +58,21 @@ camino_fits = [
   "TensorGDRCylindersSphere",
 ]
 
+fit_map = {
+  'ZeppelinZeppelin': 'BiZeppelin',
+  'Tensor': 'DT'
+}
+
 camino_fits = [model.lower() for model in camino_fits]
 
 def fit_all_models():
   Parallel(n_jobs=-1)(delayed(fit_model_voxels)(model, i) for model, i in zip(models, range(len(models))))
 
 def fit_model_voxels(model, position):
-  print(model)
-  model_name =  "".join(model)
-
+  model_name =  re.sub(r"-[0-9]", "","".join(model))
   print(model_name)
-  print(model_name in camino_fits)
-
+  if model_name in fit_map:
+    model_name = fit_map[model_name]
   if model_name not in camino_fits:
     print("{} is not in list of camino_fits; fits will not be generated".format(model_name))
     return

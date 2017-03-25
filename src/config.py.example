@@ -1,4 +1,7 @@
-# Fixed values or ranges for parameters
+import uuid
+
+uuid = uuid.uuid1()
+
 definitions = {
   "d": [0.8E-9, 2.2E-9],
   "theta": 0.0,
@@ -10,27 +13,62 @@ definitions = {
   "b": [0.8E-6, 1.4E-6],
 }
 
-# Parameters to filter out while learning
 strip = ["theta", "phi", "alpha"]
 
-# Declared models to generate and test on
+
+# Possible options for models:
+#          intra-axonal: stick, cylinder, gdrcylinders
+#          extra-axonal: ball, zeppelin, tensor
+# isotropic restriction: astrosticks, astrocylinders, sphere, dot
+
 models = [
-  # ['ball'],
-  # ['zeppelin'],
-  # ['tensor'],
-
-  # ['ball', 'stick'],
-  # ['ball', 'cylindergpd'],
-  # ['ball', 'gammadistribradiicylinders'],
-
-  # ['ball', 'stick', 'astrosticks'],
-  # ['ball', 'stick', 'astrocylinders'],
-  # ['ball', 'stick', 'spheregpd'],
-  # ['ball', 'stick', 'dot'],
-
-  ['tensor', 'gammadistribradiicylinders', 'spheregpd'],
+  # ['Tensor'],
+  ['Zeppelin-1', 'Zeppelin-2'],
+  # ['Ball', 'Stick'],
+  # ['Ball', 'Cylinder'],
+  # ['Ball', 'GDRCylinders'],
+  # ['Zeppelin', 'Stick'],
+  # ['Zeppelin', 'Cylinder'],
+  # ['Zeppelin', 'GDRCylinders'],
+  # ['Tensor', 'Stick'],
+  # ['Tensor', 'Cylinder'],
+  # ['Tensor', 'GDRCylinders'],
+  # ['Ball', 'Stick', 'Dot'],
+  # ['Ball', 'Cylinder', 'Dot'],
+  # ['Ball', 'GDRCylinders', 'Dot'],
+  # ['Zeppelin', 'Stick', 'Dot'],
+  # ['Zeppelin', 'Cylinder', 'Dot'],
+  # ['Zeppelin', 'GDRCylinders', 'Dot'],
+  # ['Tensor', 'Stick', 'Dot'],
+  # ['Tensor', 'Cylinder', 'Dot'],
+  # ['Tensor', 'GDRCylinders', 'Dot'],
+  # ['Ball', 'Stick', 'Astrosticks'],
+  # ['Ball', 'Cylinder', 'Astrosticks'],
+  # ['Ball', 'GDRCylinders', 'Astrosticks'],
+  # ['Zeppelin', 'Stick', 'Astrosticks'],
+  # ['Zeppelin', 'Cylinder', 'Astrosticks'],
+  # ['Zeppelin', 'GDRCylinders', 'Astrosticks'],
+  # ['Tensor', 'Stick', 'Astrosticks'],
+  # ['Tensor', 'Cylinder', 'Astrosticks'],
+  # ['Tensor', 'GDRCylinders', 'Astrosticks'],
+  # ['Ball', 'Stick', 'Astrocylinders'],
+  # ['Ball', 'Cylinder', 'Astrocylinders'],
+  # ['Ball', 'GDRCylinders', 'Astrocylinders'],
+  # ['Zeppelin', 'Stick', 'Astrocylinders'],
+  # ['Zeppelin', 'Cylinder', 'Astrocylinders'],
+  # ['Zeppelin', 'GDRCylinders', 'Astrocylinders'],
+  # ['Tensor', 'Stick', 'Astrocylinders'],
+  # ['Tensor', 'Cylinder', 'Astrocylinders'],
+  # ['Tensor', 'GDRCylinders', 'Astrocylinders'],
+  # ['Ball', 'Stick', 'Sphere'],
+  # ['Ball', 'Cylinder', 'Sphere'],
+  # ['Ball', 'GDRCylinders', 'Sphere'],
+  # ['Zeppelin', 'Stick', 'Sphere'],
+  # ['Zeppelin', 'Cylinder', 'Sphere'],
+  # ['Zeppelin', 'GDRCylinders', 'Sphere'],
+  # ['Tensor', 'Stick', 'Sphere'],
+  # ['Tensor', 'Cylinder', 'Sphere'],
+  # ['Tensor', 'GDRCylinders', 'Sphere'],
 ]
-
-# Meta parameters for model generation
-dataset_size = 125
+dataset_size = 10
 signal_noise_ratio = 0

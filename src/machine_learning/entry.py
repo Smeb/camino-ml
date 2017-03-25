@@ -24,9 +24,12 @@ algorithms = [
     ('RidgeRegression', train_ridge, {}),
 ]# + initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
 
+def list_to_lower(lst):
+  return [item.lower() for item in lst]
+
 def all_datasets():
   for model in models:
-    yield Dataset.from_model(model)
+    yield Dataset.from_model(list_to_lower(model))
 
 def gen_experiments(dataset):
   experiments = []

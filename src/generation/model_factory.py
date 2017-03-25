@@ -43,12 +43,18 @@ def get_dataset_path(model):
 def get_param_names(model):
   param_names = []
   for index, compartment in enumerate(model):
-    params = camino_compartments[compartment]
+    params = camino_compartments[get_compartment_type(compartment)]
     param_names.append("{}_ivf".format(compartment))
     for param in params:
       param_names.append("{}_{}".format(compartment, param))
   print(param_names)
   return param_names
+
+def get_compartment_type(compartment):
+  # In rare cases compartments need to be numbered using the scheme:
+  # {compartment}${number}
+  return compartment.split('-')[0]
+
 
 def gen_model(compartments, position):
   compartments = [compartment.lower() for compartment in compartments]
@@ -83,7 +89,7 @@ def convert_voxel(bfloat_path, output_path):
 def gen_voxel(model, output_path, log):
   cmd = ["{} -synthmodel compartment {}".format(datasynth_path, len(model))]
   for index, compartment in enumerate(model):
-    compartment_name = compartment
+    compartment_name = get_compartment_type(compartment)
     if compartment in compartment_map:
       compartment_name = compartment_map[compartment]
 
@@ -109,7 +115,7 @@ def write_spec(compartments, name):
   with open("{}/{}/{}.spec".format(data_path, name, name), 'w') as definition_file:
     for compartment in compartments:
       print("{} : {}".format(compartment,
-      camino_compartments[compartment]), file=definition_file)
+      camino_compartments[get_compartment_type(compartment)]), file=definition_file)
     print(file=definition_file)
     print(definitions, file=definition_file)
 
@@ -136,7 +142,7 @@ def init_model(compartments):
       max_ivf -= ivf
     else:
       ivf = max_ivf
-    model[compartment] = gen_compartment(camino_compartments[compartment], run, ivf)
+    model[compartment] = gen_compartment(camino_compartments[get_compartment_type(compartment)], run, ivf)
   return model
 
 def gen_compartment(compartmentParams, run, ivf):

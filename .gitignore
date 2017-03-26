@@ -2,6 +2,7 @@
 /media
 /data*/
 /results*/
+/tmp
 **/__pycache__/**
 ml_experiments.egg-info/**
 *.pyc

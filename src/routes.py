@@ -1,10 +1,11 @@
 import os
 import errno
 
+from src.config import gradient_strength
 
 root_path = os.path.abspath(os.getcwd())
 config_file_path = root_path + '/config.json'
-scheme_path = root_path + '/schemes/PGSE_90_60t.scheme'
+scheme_path = root_path + '/schemes/PGSE_90_{}t.scheme'.format(gradient_strength)
 data_path = root_path + '/data'
 media_path = root_path + '/media'
 results_path = root_path + '/results'

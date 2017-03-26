@@ -35,13 +35,13 @@ camino_compartments = {
 }
 
 def get_file_name(path):
-  os.path.splitext(os.path.basename(path))[0]
+  return os.path.splitext(os.path.basename(path))[0]
 
 def get_model_name(compartments):
-  return "".join(list(map(get_compartment_type, compartments))) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)
+  return "".join(list(map(get_compartment_type, compartments))) + "_{}".format(dataset_size)
 
 def get_dataset_path(model):
-  return "{}/{}/{}".format(data_path, get_file_name(scheme_path), get_model_name(model))
+  return "{}/{}/{}/{}".format(data_path, get_file_name(scheme_path), signal_noise_ratio, get_model_name(model))
 
 def get_param_names(model):
   param_names = []
@@ -59,10 +59,11 @@ def get_compartment_type(compartment):
   return compartment.split('-')[0]
 
 
-def gen_model(compartments, position):
-  compartments = [compartment.lower() for compartment in compartments]
-  name = get_model_name(compartments)
-  output_path = "{}/{}".format(data_path, name)
+def gen_model(model, position):
+  compartments = [compartment.lower() for compartment in model]
+  name = get_model_name(model)
+  output_path = get_dataset_path(model)
+  print(output_path)
   try:
     os.makedirs(output_path)
     os.makedirs(output_path + '/raw')
@@ -74,17 +75,17 @@ def gen_model(compartments, position):
     else:
       raise
 
-  write_spec(compartments, name)
+  write_spec(compartments, output_path, name)
 
   with open("{}/{}.params".format(output_path, name), 'w') as param_file:
     with open("{}/{}.log".format(output_path, name), 'w') as log_file:
       print("Generating {} voxels for model {}".format(dataset_size, name))
       for i in tqdm(range(dataset_size), position=position, desc=" ".join(compartments)):
-        model = init_model(compartments)
+        camino_model = init_model(compartments)
         bfloat_path = "{}/raw/{}.Bfloat".format(output_path, str(i))
-        gen_voxel(model, "{}/raw/{}.Bfloat".format(output_path, str(i)), log_file)
+        gen_voxel(camino_model, "{}/raw/{}.Bfloat".format(output_path, str(i)), log_file)
         convert_voxel(bfloat_path, "{}/float/{}.float".format(output_path, str(i)))
-        write_params(model, param_file)
+        write_params(camino_model, param_file)
 
 def convert_voxel(bfloat_path, output_path):
   call("cat {} | {} > {}".format(bfloat_path, float2txt_path, output_path), shell=True)
@@ -114,8 +115,8 @@ def stringify_params(model, compartment):
 def stringify_params_no_ivf(model, compartment):
   return " ".join(str(model[compartment][param]) for param in model[compartment] if param is not "ivf")
 
-def write_spec(compartments, name):
-  with open("{}/{}/{}.spec".format(data_path, name, name), 'w') as definition_file:
+def write_spec(compartments, output_path, name):
+  with open("{}/{}.spec".format(output_path, name), 'w') as definition_file:
     for compartment in compartments:
       print("{} : {}".format(compartment,
       camino_compartments[get_compartment_type(compartment)]), file=definition_file)

@@ -37,4 +37,4 @@ def heatmap(data, metric, noise):
     t.tick1On = False
     t.tick2On = False
 
-  fig.savefig('{}_noise-{}/heatmap.png'.format(media_path, noise))
+  fig.savefig('{}/aggregate/heatmap_noise_{}.png'.format(media_path, noise))

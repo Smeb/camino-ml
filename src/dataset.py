@@ -29,9 +29,9 @@ class Dataset:
     return model.split('_')[0]
 
   @staticmethod
-  def str_get_noise(model):
+  def str_get_n_voxels(model):
     return model.split('_')[1]
 
   @staticmethod
-  def str_get_n_voxels(model):
-    return model.split('_')[2]
+  def str_get_noise(model):
+    return int(model.split('_')[2])

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 from src.routes import media_path
 
-def heatmap(data, metric):
+def heatmap(data, metric, noise):
   name = 'aggregate_{}_heatmap'.format(metric)
   print(data)
 
@@ -22,10 +22,6 @@ def heatmap(data, metric):
   ax.invert_yaxis()
   ax.xaxis.tick_top()
 
-  # Trim id values from models
-  regex = re.compile(r"-[0-9]")
-  labels = [re.sub(regex, "", label) for label in data.columns]
-
   ax.set_xticklabels(data.columns, minor=False)
   ax.set_yticklabels(data.index, minor=False)
 
@@ -41,4 +37,4 @@ def heatmap(data, metric):
     t.tick1On = False
     t.tick2On = False
 
-  fig.savefig('{}/heatmap.png'.format(media_path))
+  fig.savefig('{}_noise-{}/heatmap.png'.format(media_path, noise))

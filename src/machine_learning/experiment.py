@@ -6,7 +6,7 @@ import pandas
 from sklearn import metrics
 
 from src.config import uuid
-from src.routes import make_path_ignoring_existing, media_path
+from src.routes import make_path_ignoring_existing, media_path, results_path
 from src.visualisation.visualisation import (
   visualise_param_v_param,
   visualise_bland_altman,
@@ -23,16 +23,21 @@ class Experiment:
     self.unscaled_test_Y = self.model.train_dataset.inverse_transform(test_dataset.test_Y)
 
     self.media_path = '{}/{}-{}'.format(media_path, self.model.train_dataset.name, self.test_dataset.name)
-    self.make_media_path()
+    self.results_path = '{}/{}-{}'.format(results_path, self.model.train_dataset.name, self.test_dataset.name)
 
+    self.make_media_path()
+    self.make_results_path()
 
   def make_media_path(self):
     make_path_ignoring_existing(self.media_path)
 
+  def make_results_path(self):
+    make_path_ignoring_existing(self.results_path)
+
   def get_results_dataframe(self):
-    self.results_path = '{}/results.csv'.format(self.media_path)
-    if os.path.isfile(self.results_path):
-      return pandas.DataFrame.from_csv(self.results_path)
+    self.results_file = '{}/results.csv'.format(self.results_path)
+    if os.path.isfile(self.results_file):
+      return pandas.DataFrame.from_csv(self.results_file)
     else:
       return pandas.DataFrame(
         columns=['uuid',
@@ -40,11 +45,10 @@ class Experiment:
         'mean_absolute_error',
         'mean_squared_error',
         'r2_score'] + self.test_dataset.feature_names)
-      self.df.to_csv(self.results_path)
+      self.df.to_csv(self.results_file)
 
   def evaluate(self):
     df = self.get_results_dataframe()
-
 
     row = [uuid, self.model.name]
     row.append(metrics.mean_absolute_error(self.unscaled_test_Y, self.unscaled_predict_Y))
@@ -56,7 +60,7 @@ class Experiment:
         self.unscaled_predict_Y[param]))
 
     df.loc[len(df)] = row
-    df.to_csv(self.results_path)
+    df.to_csv(self.results_file)
 
   def visualise(self):
     visualise_param_v_param(self.unscaled_test_Y,

@@ -4,7 +4,7 @@ import errno
 
 root_path = os.path.abspath(os.getcwd())
 config_file_path = root_path + '/config.json'
-scheme_path = root_path + '/PGSE_90.scheme'
+scheme_path = root_path + '/schemes/PGSE_90_60t.scheme'
 data_path = root_path + '/data'
 media_path = root_path + '/media'
 

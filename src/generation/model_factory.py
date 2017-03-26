@@ -35,7 +35,7 @@ camino_compartments = {
 }
 
 def get_model_name(compartments):
-  return "".join(compartments) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)
+  return "".join(list(map(get_compartment_type, compartments))) + "_{}".format(dataset_size)  + "_{}".format(signal_noise_ratio)
 
 def get_dataset_path(model):
   return "{}/{}".format(data_path, get_model_name(model))

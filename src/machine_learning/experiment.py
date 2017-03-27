@@ -41,6 +41,9 @@ class Experiment(object):
         self.make_media_path()
         self.make_results_path()
         self.results_file_path = '{}/results.csv'.format(self.results_path)
+        if os.path.exists(self.results_file_path):
+            raise Exception('For {} on model {}, previous training data exists'.format(
+                model.name, self.test_dataset.unique_string))
 
     def make_media_path(self):
         """Creates the folders for the media path, where visualisations

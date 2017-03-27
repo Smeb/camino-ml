@@ -7,11 +7,16 @@ Routing constants definitions
 import os
 import errno
 
-from src.config import GRADIENT_STRENGTH
+from src.config import EXPLICIT_SCHEME, GRADIENT_STRENGTH
 
 ROOT_PATH = os.path.abspath(os.getcwd())
 CONFIG_FILE_PATH = ROOT_PATH + '/config.json'
-SCHEME_PATH = ROOT_PATH + '/schemes/PGSE_90_{}t.scheme'.format(GRADIENT_STRENGTH)
+
+if EXPLICIT_SCHEME is not None:
+    SCHEME_PATH = ROOT_PATH + '/schemes/EXPLICIT_SCHEME'
+else:
+    SCHEME_PATH = ROOT_PATH + '/schemes/PGSE_90_{}t.scheme'.format(GRADIENT_STRENGTH)
+
 DATA_PATH = ROOT_PATH + '/data'
 MEDIA_PATH = ROOT_PATH + '/media'
 RESULTS_PATH = ROOT_PATH + '/results'

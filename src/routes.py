@@ -1,29 +1,36 @@
+"""
+Routing constants definitions
+    - Routing is based on the relative paths from the root directory
+    - Routing shouldn't be changed after data has been generated, since
+      the data won't be findable
+"""
 import os
 import errno
 
-from src.config import gradient_strength
+from src.config import GRADIENT_STRENGTH
 
-root_path = os.path.abspath(os.getcwd())
-config_file_path = root_path + '/config.json'
-scheme_path = root_path + '/schemes/PGSE_90_{}t.scheme'.format(gradient_strength)
-data_path = root_path + '/data'
-media_path = root_path + '/media'
-results_path = root_path + '/results'
+ROOT_PATH = os.path.abspath(os.getcwd())
+CONFIG_FILE_PATH = ROOT_PATH + '/config.json'
+SCHEME_PATH = ROOT_PATH + '/schemes/PGSE_90_{}t.scheme'.format(GRADIENT_STRENGTH)
+DATA_PATH = ROOT_PATH + '/data'
+MEDIA_PATH = ROOT_PATH + '/media'
+RESULTS_PATH = ROOT_PATH + '/results'
 
-camino_bin_path = root_path + '/camino/bin'
+CAMINO_BIN_PATH = ROOT_PATH + '/camino/bin'
 
-datasynth_path = camino_bin_path + '/datasynth'
-modelfit_path = camino_bin_path + '/modelfit'
+DATASYNTH_PATH = CAMINO_BIN_PATH + '/datasynth'
+MODELFIT_PATH = CAMINO_BIN_PATH + '/modelfit'
 
-float2txt_path = camino_bin_path + '/float2txt'
-double2txt_path = camino_bin_path + '/double2txt'
+FLOAT2TXT_PATH = CAMINO_BIN_PATH + '/float2txt'
+DOUBLE2TXT_PATH = CAMINO_BIN_PATH + '/double2txt'
 
 def make_path_ignoring_existing(path):
-  try:
-    os.makedirs(path)
-  except OSError as exc:
-    if exc.errno == errno.EEXIST and os.path.isdir(path):
-      pass
-    else:
-      raise
-
+    """Makes a directory, including all intermediate directories given,
+    and doesn't throw an error if the directory already exists"""
+    try:
+        os.makedirs(path)
+    except OSError as exc:
+        if exc.errno == errno.EEXIST and os.path.isdir(path):
+            pass
+        else:
+            raise

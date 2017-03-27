@@ -1,19 +1,24 @@
+"""
+Configuration file
+    Effects the scope of operations - subprograms will select a subset
+    of all datasets based on those which match the given configuration
+"""
 import uuid
 
-uuid = uuid.uuid1()
+UUID = uuid.uuid1()
 
-definitions = {
-  "d": [0.8E-9, 2.2E-9],
-  "theta": 0.0,
-  "phi": 0.0,
-  "alpha": 0.0,
-  "R": [1.5E-6, 2.5E-6],
-  "Rs": [1.5E-6, 2.5E-6],
-  "k": [1.7, 2.7],
-  "b": [0.8E-6, 1.4E-6],
+DEFINITIONS = {
+    "d": [0.8E-9, 2.2E-9],
+    "theta": 0.0,
+    "phi": 0.0,
+    "alpha": 0.0,
+    "R": [1.5E-6, 2.5E-6],
+    "Rs": [1.5E-6, 2.5E-6],
+    "k": [1.7, 2.7],
+    "b": [0.8E-6, 1.4E-6],
 }
 
-strip = ["theta", "phi", "alpha"]
+STRIP_LIST = ["theta", "phi", "alpha"]
 
 
 # Possible options for models:
@@ -21,54 +26,56 @@ strip = ["theta", "phi", "alpha"]
 #          extra-axonal: ball, zeppelin, tensor
 # isotropic restriction: astrosticks, astrocylinders, sphere, dot
 
-models = [
-  ['Tensor'],
-  ['Zeppelin-1', 'Zeppelin-2'],
-  ['Ball', 'Stick'],
-  ['Ball', 'Cylinder'],
-  ['Ball', 'GDRCylinders'],
-  ['Zeppelin', 'Stick'],
-  ['Zeppelin', 'Cylinder'],
-  ['Zeppelin', 'GDRCylinders'],
-  ['Tensor', 'Stick'],
-  ['Tensor', 'Cylinder'],
-  ['Tensor', 'GDRCylinders'],
-  ['Ball', 'Stick', 'Dot'],
-  ['Ball', 'Cylinder', 'Dot'],
-  ['Ball', 'GDRCylinders', 'Dot'],
-  ['Zeppelin', 'Stick', 'Dot'],
-  ['Zeppelin', 'Cylinder', 'Dot'],
-  ['Zeppelin', 'GDRCylinders', 'Dot'],
-  ['Tensor', 'Stick', 'Dot'],
-  ['Tensor', 'Cylinder', 'Dot'],
-  ['Tensor', 'GDRCylinders', 'Dot'],
-  ['Ball', 'Stick', 'Astrosticks'],
-  ['Ball', 'Cylinder', 'Astrosticks'],
-  ['Ball', 'GDRCylinders', 'Astrosticks'],
-  ['Zeppelin', 'Stick', 'Astrosticks'],
-  ['Zeppelin', 'Cylinder', 'Astrosticks'],
-  ['Zeppelin', 'GDRCylinders', 'Astrosticks'],
-  ['Tensor', 'Stick', 'Astrosticks'],
-  ['Tensor', 'Cylinder', 'Astrosticks'],
-  ['Tensor', 'GDRCylinders', 'Astrosticks'],
-  ['Ball', 'Stick', 'Astrocylinders'],
-  ['Ball', 'Cylinder', 'Astrocylinders'],
-  ['Ball', 'GDRCylinders', 'Astrocylinders'],
-  ['Zeppelin', 'Stick', 'Astrocylinders'],
-  ['Zeppelin', 'Cylinder', 'Astrocylinders'],
-  ['Zeppelin', 'GDRCylinders', 'Astrocylinders'],
-  ['Tensor', 'Stick', 'Astrocylinders'],
-  ['Tensor', 'Cylinder', 'Astrocylinders'],
-  ['Tensor', 'GDRCylinders', 'Astrocylinders'],
-  ['Ball', 'Stick', 'Sphere'],
-  ['Ball', 'Cylinder', 'Sphere'],
-  ['Ball', 'GDRCylinders', 'Sphere'],
-  ['Zeppelin', 'Stick', 'Sphere'],
-  ['Zeppelin', 'Cylinder', 'Sphere'],
-  ['Zeppelin', 'GDRCylinders', 'Sphere'],
-  ['Tensor', 'Stick', 'Sphere'],
-  ['Tensor', 'Cylinder', 'Sphere'],
-  ['Tensor', 'GDRCylinders', 'Sphere'],
+MODELS = [
+    ['Tensor'],
+    ['Zeppelin-1', 'Zeppelin-2'],
+    ['Ball', 'Stick'],
+    ['Ball', 'Cylinder'],
+    ['Ball', 'GDRCylinders'],
+    ['Zeppelin', 'Stick'],
+    ['Zeppelin', 'Cylinder'],
+    ['Zeppelin', 'GDRCylinders'],
+    ['Tensor', 'Stick'],
+    ['Tensor', 'Cylinder'],
+    ['Tensor', 'GDRCylinders'],
+    ['Ball', 'Stick', 'Dot'],
+    ['Ball', 'Cylinder', 'Dot'],
+    ['Ball', 'GDRCylinders', 'Dot'],
+    ['Zeppelin', 'Stick', 'Dot'],
+    ['Zeppelin', 'Cylinder', 'Dot'],
+    ['Zeppelin', 'GDRCylinders', 'Dot'],
+    ['Tensor', 'Stick', 'Dot'],
+    ['Tensor', 'Cylinder', 'Dot'],
+    ['Tensor', 'GDRCylinders', 'Dot'],
+    ['Ball', 'Stick', 'Astrosticks'],
+    ['Ball', 'Cylinder', 'Astrosticks'],
+    ['Ball', 'GDRCylinders', 'Astrosticks'],
+    ['Zeppelin', 'Stick', 'Astrosticks'],
+    ['Zeppelin', 'Cylinder', 'Astrosticks'],
+    ['Zeppelin', 'GDRCylinders', 'Astrosticks'],
+    ['Tensor', 'Stick', 'Astrosticks'],
+    ['Tensor', 'Cylinder', 'Astrosticks'],
+    ['Tensor', 'GDRCylinders', 'Astrosticks'],
+    ['Ball', 'Stick', 'Astrocylinders'],
+    ['Ball', 'Cylinder', 'Astrocylinders'],
+    ['Ball', 'GDRCylinders', 'Astrocylinders'],
+    ['Zeppelin', 'Stick', 'Astrocylinders'],
+    ['Zeppelin', 'Cylinder', 'Astrocylinders'],
+    ['Zeppelin', 'GDRCylinders', 'Astrocylinders'],
+    ['Tensor', 'Stick', 'Astrocylinders'],
+    ['Tensor', 'Cylinder', 'Astrocylinders'],
+    ['Tensor', 'GDRCylinders', 'Astrocylinders'],
+    ['Ball', 'Stick', 'Sphere'],
+    ['Ball', 'Cylinder', 'Sphere'],
+    ['Ball', 'GDRCylinders', 'Sphere'],
+    ['Zeppelin', 'Stick', 'Sphere'],
+    ['Zeppelin', 'Cylinder', 'Sphere'],
+    ['Zeppelin', 'GDRCylinders', 'Sphere'],
+    ['Tensor', 'Stick', 'Sphere'],
+    ['Tensor', 'Cylinder', 'Sphere'],
+    ['Tensor', 'GDRCylinders', 'Sphere'],
 ]
-dataset_size = 12500
-signal_noise_ratio = 0
+
+GRADIENT_STRENGTH = 60
+DATASET_SIZE = 100
+SIGNAL_NOISE_RATIO = 0

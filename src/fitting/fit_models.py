@@ -90,7 +90,7 @@ def fit_model_voxels(model, position):
         return
 
     dataset_path = get_dataset_data_path(model)
-    raw_path = dataset_path + '/raw'
+    raw_path = dataset_path + '/raw/test'
     fit_path = dataset_path + '/camino_fits'
     try:
         os.makedirs(fit_path)

@@ -33,18 +33,18 @@ COMPARTMENT_MAP = {
 }
 
 CAMINO_COMPARTMENTS = {
-    "stick": ["d", "theta", "phi"],
-    "cylinder": ["d", "theta", "phi", "R"],
-    "gdrcylinders": ["k", "b", "d", "theta", "phi"],
+    "Stick": ["d", "theta", "phi"],
+    "Cylinder": ["d", "theta", "phi", "R"],
+    "GDRcylinders": ["k", "b", "d", "theta", "phi"],
 
-    "ball": ["d"],
-    "zeppelin": ["d", "theta", "phi", "d_perp1"],
-    "tensor": ["d", "theta", "phi", "d_perp1", "d_perp2", "alpha"],
+    "Ball": ["d"],
+    "Zeppelin": ["d", "theta", "phi", "d_perp1"],
+    "Tensor": ["d", "theta", "phi", "d_perp1", "d_perp2", "alpha"],
 
-    "astrosticks": ["d"],
-    "astrocylinders": ["d", "R"],
-    "sphere": ["d", "Rs"],
-    "dot": [],
+    "Astrosticks": ["d"],
+    "Astrocylinders": ["d", "R"],
+    "Sphere": ["d", "Rs"],
+    "Dot": [],
 }
 def get_value_from_spec(dataset_spec_path, value):
     """Returns a value from a dataset spec"""
@@ -293,18 +293,22 @@ class Dataset(object):
         """Builds a Dataset from information on the disc"""
         name = get_model_name(model)
         data_path = get_dataset_data_path(model)
-        float_path = data_path + "/float"
+        train_float_path = data_path + "/float/train"
+        test_float_path = data_path + "/float/test"
+
         feature_names = get_param_names(model)
 
-        features = load_features(float_path)
-        ground_truth = load_ground_truth(data_path, name, model, feature_names)
+        train_x = load_features(train_float_path)
+        test_x = load_features(test_float_path)
+        train_y = load_ground_truth(train_float_path, name, model, feature_names)
+        test_y = load_ground_truth(test_float_path, name, model, feature_names)
 
-        feature_names = ground_truth.columns.tolist()
+        feature_names = train_y.columns.tolist()
 
         scaler = StandardScaler()
-        ground_truth = scaler.fit_transform(ground_truth)
 
-        train_x, test_x, train_y, test_y = train_test_split(features, ground_truth, test_size=0.2)
+        train_y = scaler.fit_transform(train_y)
+        test_y = scaler.transform(test_y)
 
         return cls(model, scaler, train_x, train_y, test_x, test_y, feature_names, name)
 
@@ -328,20 +332,19 @@ class Dataset(object):
 
 def compare_fnames(fname_a, fname_b):
     """Sorts filenames as numbers, removing the .float extension"""
-    a_name = int(os.path.splitext(fname_a)[0])
-    b_name = int(os.path.splitext(fname_b)[0])
+    a_name = int(filter(str.isdigit, fname_a))
+    b_name = int(filter(str.isdigit, fname_b))
     return 1 if a_name > b_name else 0 if a_name == b_name else -1
 
 def load_features(float_path):
     """Loads features from files saved on disc"""
-    float_files = os.listdir(float_path)
+    float_files = [float_f for float_f in os.listdir(float_path) if float_f.endswith('float')]
     float_files.sort(compare_fnames)
     features = [None] * len(float_files)
 
-    for fname in float_files:
+    for index, fname in enumerate(float_files):
         vox_array = np.genfromtxt("{}/{}".format(float_path, fname))
-        vox_number = int(filter(str.isdigit, fname))
-        features[vox_number] = vox_array.flatten().tolist()
+        features[index] = vox_array.flatten().tolist()
 
     return features
 

@@ -30,7 +30,7 @@ def all_datasets():
     dataset consists of potentially thousands of voxels, this is
     preferred to loading all datasets at once."""
     for model in MODELS:
-        yield Dataset.from_model([compartment.lower() for compartment in model])
+        yield Dataset.from_model(model)
 
 def gen_experiments(dataset):
     """Generates the list of all experiments, which consist of a Model

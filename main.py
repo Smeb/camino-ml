@@ -10,6 +10,8 @@ from src.datasets.gen_voxels import generate
 from src.fitting.fit_models import fit_all_models
 from src.machine_learning.entry import train_and_evaluate_all_datasets
 from src.visualisation.entry import visualisation_entry
+from src.scripts.divide_fits import divide_fits
+from src.scripts.divide_dataset import divide_dataset
 
 def warn(*args, **kwargs):
     #pylint: disable=unused-argument
@@ -40,5 +42,9 @@ if __name__ == "__main__":
         train_and_evaluate_all_datasets()
     elif CMD == "visualise":
         visualisation_entry()
+    elif CMD == "divide-fits":
+        divide_fits(7, 1)
+    elif CMD == "divide-dataset":
+        divide_dataset()
     else:
         usage()

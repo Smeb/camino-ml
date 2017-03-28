@@ -13,6 +13,12 @@ fit-all:
 visualise:
 	python main.py visualise
 
+divide-fits:
+	python main.py divide-fits
+
+divide-dataset:
+	python main.py divide-dataset
+
 clean:
 	rm -rf dist build data __pycache__
 

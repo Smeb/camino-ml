@@ -19,9 +19,8 @@ def compare_fnames(fname_a, fname_b):
     return 1 if a_name > b_name else 0 if a_name == b_name else -1
 
 def divide_dataset():
-  divide_model(MODELS[0])
-  # for model in MODELS:
-  #   divide_model(model)
+  for model in MODELS:
+      divide_model(model)
 
 def divide_model(model):
     name = get_model_name(model)

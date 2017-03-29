@@ -5,6 +5,7 @@ import errno
 import os
 from subprocess import call
 import re
+from multiprocessing import cpu_count
 
 from joblib import Parallel, delayed
 from tqdm import tqdm
@@ -73,12 +74,11 @@ FIT_MAP = {
 LC_CAMINO_FITS = [fit_name.lower() for fit_name in CAMINO_FITS]
 
 def fit_all_models():
-    """Fits all models using parallel threads to speed up the fitting proceess"""
-    # TODO: Parallelize on a per voxel basis
-    n_models = range(len(MODELS))
-    Parallel(n_jobs=-1)(delayed(fit_model_voxels)(model, i) for model, i in zip(MODELS, n_models))
+    """Fits all models in MODELS"""
+    for model in MODELS:
+        fit_model_voxels(model)
 
-def fit_model_voxels(model, position):
+def fit_model_voxels(model):
     """Fits all voxels in a given model; the position parameter controls
     the placement of tqdm bars"""
     model_name = re.sub(r"-[0-9]", "", "".join(model)).lower()
@@ -103,8 +103,20 @@ def fit_model_voxels(model, position):
 
     bfloat_files = [filename for filename in os.listdir(raw_path)]
 
+    n_cpus = cpu_count()
+    bfloat_groups = [[] for _ in range(n_cpus)]
+    for index, bfloat_file in enumerate(bfloat_files):
+        bfloat_groups[index % n_cpus].append(bfloat_file)
+
     print('Fitting using LM for {}'.format(model_name))
-    for bfloat_file in tqdm(bfloat_files, position=position, desc=" ".join(model)):
+    Parallel(n_jobs=-1)(delayed(fit_bfloats)(
+        bfloat_group, model_name, raw_path, fit_path, position) for bfloat_group, position
+                        in zip(bfloat_groups, range(len(bfloat_groups))))
+
+def fit_bfloats(bfloat_files, model_name, raw_path, fit_path, position):
+    """fits a compartment models to a list of voxels given in bfloat
+    format and records the result at fit_path"""
+    for bfloat_file in tqdm(bfloat_files, position=position):
         index = int(os.path.splitext(bfloat_file)[0])
 
         outfile = "{}/{}.txt".format(fit_path, index)

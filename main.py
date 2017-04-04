@@ -43,7 +43,7 @@ if __name__ == "__main__":
     elif CMD == "visualise":
         visualisation_entry()
     elif CMD == "divide-fits":
-        divide_fits(7, 1)
+        divide_fits(2, 1)
     elif CMD == "divide-dataset":
         divide_dataset()
     else:

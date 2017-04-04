@@ -26,8 +26,6 @@ class Experiment(object):
         self.unscaled_predict_y = self.model.train_dataset.inverse_transform(
             self.model.predict(test_dataset.test_x))
 
-        self.unscaled_test_y = self.model.train_dataset.inverse_transform(test_dataset.test_y)
-
         if self.model.train_dataset.scheme != self.test_dataset.scheme:
             raise Exception('Scheme files of datasets should match')
 
@@ -41,6 +39,13 @@ class Experiment(object):
         self.make_media_path()
         self.make_results_path()
         self.results_file_path = '{}/results.csv'.format(self.results_path)
+
+        if not os.path.exists('{}/ground_truth.csv'.format(self.results_path)):
+            self.test_dataset.test_y.to_csv('{}/ground_truth.csv'.format(self.results_path))
+        self.unscaled_predict_y.to_csv('{}/{}.csv'.format(self.results_path, self.model.name))
+
+        self.results_file_path = '{}/results.csv'.format(self.results_path)
+
         if os.path.exists(self.results_file_path):
             raise Exception('For {} on model {}, previous training data exists'.format(
                 model.name, self.test_dataset.unique_string))
@@ -82,12 +87,12 @@ class Experiment(object):
         results_dataframe = self.get_results_dataframe()
 
         row = [UUID, self.model.name]
-        row.append(metrics.mean_absolute_error(self.unscaled_test_y, self.unscaled_predict_y))
-        row.append(metrics.mean_squared_error(self.unscaled_test_y, self.unscaled_predict_y))
-        row.append(metrics.r2_score(self.unscaled_test_y, self.unscaled_predict_y))
+        row.append(metrics.mean_absolute_error(self.test_dataset.test_y, self.unscaled_predict_y))
+        row.append(metrics.mean_squared_error(self.test_dataset.test_y, self.unscaled_predict_y))
+        row.append(metrics.r2_score(self.test_dataset.test_y, self.unscaled_predict_y))
 
         for param in self.test_dataset.feature_names:
-            row.append(metrics.r2_score(self.unscaled_test_y[param],
+            row.append(metrics.r2_score(self.test_dataset.test_y[param],
                                         self.unscaled_predict_y[param]))
 
         # pylint: disable=no-member
@@ -98,13 +103,13 @@ class Experiment(object):
     def visualise(self):
         """Produces visualisations of the test ground truth for the test
         dataset against the values predicted by the model"""
-        parameter_scatterplot(self.unscaled_test_y,
+        parameter_scatterplot(self.test_dataset.test_y,
                               self.unscaled_predict_y,
                               self.test_dataset.feature_names,
                               self.model.name,
                               self.media_path)
 
-        bland_altman(self.unscaled_test_y,
+        bland_altman(self.test_dataset.test_y,
                      self.unscaled_predict_y,
                      self.test_dataset.feature_names,
                      self.model.name,

@@ -14,7 +14,6 @@ import pandas
 from tqdm import tqdm
 import numpy as np
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import train_test_split
 
 from src.config import DEFINITIONS, DATASET_SIZE, SIGNAL_NOISE_RATIO, STRIP_LIST
 from src.routes import (DATA_PATH,
@@ -114,7 +113,7 @@ def gen_dataset(model, position):
     """Generates a dataset given a specific model; the position
     parameter informs the placement of tqdm progress bars"""
     # TODO: Progress bars are currently buggy in how they display
-    compartments = [compartment.lower() for compartment in model]
+    compartments = [compartment for compartment in model]
     name = get_model_name(model)
     output_path = get_dataset_data_path(model)
     try:
@@ -308,13 +307,13 @@ class Dataset(object):
         scaler = StandardScaler()
 
         train_y = scaler.fit_transform(train_y)
-        test_y = scaler.transform(test_y)
-
         return cls(model, scaler, train_x, train_y, test_x, test_y, feature_names, name)
 
     @property
     def unique_string(self):
+        """Returns a unique string to identify the dataset"""
         return '{}_{}_{}'.format(self.name, self.size, self.noise)
+
     @property
     def size(self):
         """Returns the size of the dataset"""

@@ -35,7 +35,7 @@ COMPARTMENT_MAP = {
 CAMINO_COMPARTMENTS = {
     "Stick": ["d", "theta", "phi"],
     "Cylinder": ["d", "theta", "phi", "R"],
-    "GDRcylinders": ["k", "b", "d", "theta", "phi"],
+    "GDRCylinders": ["k", "b", "d", "theta", "phi"],
 
     "Ball": ["d"],
     "Zeppelin": ["d", "theta", "phi", "d_perp1"],

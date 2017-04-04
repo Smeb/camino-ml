@@ -1,0 +1,4 @@
+Host camino-1
+  Hostname 51.141.31.163
+  User     zcabbry
+  IdentityFile ~/.ssh/camino_rsa

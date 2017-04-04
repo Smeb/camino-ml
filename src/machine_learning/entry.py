@@ -12,15 +12,15 @@ from .experiment import Experiment
 from .model import Model
 from .algorithms.random_forest import train_rf
 from .algorithms.knn import train_knn
-from .algorithms.svr import train_linear_svr
-from .algorithms.multilayer_perceptron import train_mlp
+# from .algorithms.svr import train_linear_svr
+# from .algorithms.multilayer_perceptron import train_mlp
 from .algorithms.ridge_regression import train_ridge
 # from .algorithms.convolutional_nn import initialise_nn_grid_search, search_convolutional_nn
 
 ALGORITHMS = [
     ('RandomForest', train_rf, {}),
-    ('MultiLayerPerceptron', train_mlp, {}),
-    ('linearSVR', train_linear_svr, {}),
+    # ('MultiLayerPerceptron', train_mlp, {}),
+    # ('linearSVR', train_linear_svr, {}),
     ('KNN', train_knn, {}),
     ('RidgeRegression', train_ridge, {}),
 ]# + initialise_nn_grid_search(range(5, 26, 2), range(2, 5))
@@ -30,6 +30,7 @@ def all_datasets():
     dataset consists of potentially thousands of voxels, this is
     preferred to loading all datasets at once."""
     for model in MODELS:
+        print("Loading: {}".format(model))
         yield Dataset.from_model(model)
 
 def gen_experiments(dataset):

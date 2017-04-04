@@ -16,7 +16,6 @@ from src.datasets.dataset_factory import get_dataset_data_path
 
 CAMINO_FITS = [
     "DT",
-    "Tensor",
     "BiZeppelin",
     "BallStick",
     "BallCylinder",
@@ -68,6 +67,7 @@ CAMINO_FITS = [
 FIT_MAP = {
     # Note: Cannot fit BiZeppelin models when they're facing the same
     # direction
+    'DT': 'Tensor',
     # 'zeppelinzeppelin': 'BiZeppelin',
 }
 

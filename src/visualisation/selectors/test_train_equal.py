@@ -44,20 +44,76 @@ def select_metric(data, metric, noise, scheme):
     target metric"""
 
     algorithms = set(data['algorithm'])
-    models = set(data['model_name'])
+
+    models = pandas.Categorical(PANAGIOTAKI_RANKING)
     metrics = pandas.DataFrame(columns=algorithms, index=models, dtype='float')
     for algorithm in algorithms:
         for model in models:
             metrics.loc[model, algorithm] = select_row_value(
                 data, metric, noise, algorithm, model, scheme)
+
     return metrics
 
 def select_row_value(data, metric, noise, algorithm, model, scheme):
     """Selects a single value from the dataframe based on the algorithm
     used, the model which generated the data, and the noise used when
     generating the model"""
-    return float(data.ix[(data['algorithm'] == algorithm) &
-                         (data['model_name'] == model) &
-                         (data['noise'] == noise) &
-                         (data['scheme'] == scheme)
-                        ][metric])
+    row_value = data.ix[(data['algorithm'] == algorithm) &
+                        (data['model_name'] == model) &
+                        (data['noise'] == noise) &
+                        (data['scheme'] == scheme)
+                       ][metric]
+    print(noise, algorithm, model, scheme)
+
+    return float(row_value)
+
+
+PANAGIOTAKI_RANKING = [
+    'TensorCylinderSphere',
+    'TensorStickSphere',
+    'ZeppelinCylinderSphere',
+    'ZeppelinGDRCylindersSphere',
+    'ZeppelinStickSphere',
+    'TensorCylinderDot',
+    'TensorGDRCylindersDot',
+    'TensorGDRCylindersSphere',
+    'ZeppelinCylinderDot',
+    'ZeppelinGDRCylindersDot',
+    'BallGDRCylindersDot',
+    'BallCylinderSphere',
+    'BallCylinderDot',
+    'BallGDRCylindersSphere',
+    'ZeppelinStickDot',
+    'TensorCylinderAstrocylinders',
+    'TensorCylinderAstrosticks',
+    'TensorGDRCylindersAstrosticks',
+    'TensorStickAstrocylinders',
+    'TensorStickAstrosticks',
+    'ZeppelinGDRCylindersAstrocylinders',
+    'BallStickSphere',
+    'BallCylinderAstrocylinders',
+    'BallCylinderAstrosticks',
+    'ZeppelinCylinderAstrocylinders',
+    'BallStickAstrocylinders',
+    'ZeppelinCylinderAstrosticks',
+    'TensorStickDot',
+    'BallStickAstrosticks',
+    'BallGDRCylindersAstrosticks',
+    'ZeppelinStickAstrocylinders',
+    'ZeppelinStickAstrosticks',
+    'BallGDRCylindersAstrocylinders',
+    'BallStickDot',
+    'TensorGDRCylindersAstrocylinders',
+    'ZeppelinGDRCylindersAstrosticks',
+    'TensorCylinder',
+    'TensorGDRCylinders',
+    'BallCylinder',
+    'ZeppelinCylinder',
+    'BallGDRCylinders',
+    'TensorStick',
+    'ZeppelinGDRCylinders',
+    'ZeppelinZeppelin',
+    'BallStick',
+    'ZeppelinStick',
+    'Tensor',
+]

@@ -13,7 +13,7 @@ def heatmap(data, metric, noise):
     name = '{}_heatmap_{}'.format(metric, noise)
 
     fig, axes = plt.subplots()
-    heatmap_plt = axes.pcolor(data, cmap=plt.cm.Blues, alpha=0.8, edgecolors='face')
+    heatmap_plt = axes.pcolor(data, cmap=plt.cm.Blues, alpha=0.8, edgecolors='face', vmin=0.0)
 
     fig = plt.gcf()
     fig.set_size_inches(8, 11)

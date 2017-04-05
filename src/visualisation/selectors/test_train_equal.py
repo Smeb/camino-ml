@@ -5,7 +5,8 @@
 import os
 import pandas
 
-from src.datasets.dataset_factory import get_value_from_spec
+from src.config import MODELS
+from src.datasets.dataset_factory import get_model_name, get_value_from_spec
 from src.machine_learning.experiment import Experiment
 from src.routes import RESULTS_PATH
 
@@ -63,8 +64,6 @@ def select_row_value(data, metric, noise, algorithm, model, scheme):
                         (data['noise'] == noise) &
                         (data['scheme'] == scheme)
                        ][metric]
-    print(noise, algorithm, model, scheme)
-
     return float(row_value)
 
 
@@ -117,3 +116,5 @@ PANAGIOTAKI_RANKING = [
     'ZeppelinStick',
     'Tensor',
 ]
+
+PANAGIOTAKI_RANKING = [item for item in PANAGIOTAKI_RANKING if item in list(map(get_model_name, MODELS))]

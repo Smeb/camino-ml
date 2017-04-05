@@ -1,6 +1,9 @@
 .PHONY: clean clean_data install generate train-all
 all:
 
+extract-fits:
+	python main.py extract-all
+
 generate:
 	python main.py generate
 

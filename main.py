@@ -8,6 +8,7 @@ from matplotlib import rcParams
 
 from src.datasets.gen_voxels import generate
 from src.fitting.fit_models import fit_all_models
+from src.fitting.extract_parameters import extract_all
 from src.machine_learning.entry import train_and_evaluate_all_datasets
 from src.visualisation.entry import visualisation_entry
 from src.scripts.divide_fits import divide_fits
@@ -46,5 +47,7 @@ if __name__ == "__main__":
         divide_fits(2, 1)
     elif CMD == "divide-dataset":
         divide_dataset()
+    elif CMD == "extract-all":
+        extract_all()
     else:
         usage()

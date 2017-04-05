@@ -7,10 +7,9 @@ import matplotlib.pyplot as plt
 
 from src.routes import MEDIA_PATH
 
-def heatmap(data, metric, noise):
+def heatmap(data, metric, title):
     """Produces a blue shaded HEATMAP; based on a visualisation by Nathan Yau
     of flowingdata.com"""
-    name = '{}_heatmap_{}'.format(metric, noise)
 
     fig, axes = plt.subplots()
     heatmap_plt = axes.pcolor(data, cmap=plt.cm.Blues, alpha=0.8, edgecolors='face', vmin=0.0)
@@ -40,7 +39,8 @@ def heatmap(data, metric, noise):
         tick.tick1On = False
         tick.tick2On = False
 
-    print(data)
-    plt.colorbar(heatmap_plt)
+    cbar = plt.colorbar(heatmap_plt)
+    cbar.set_label(metric.replace('_', ' '))
 
-    fig.savefig('{}/aggregate/{}.png'.format(MEDIA_PATH, name))
+
+    fig.savefig('{}/aggregate/{}.png'.format(MEDIA_PATH, title))

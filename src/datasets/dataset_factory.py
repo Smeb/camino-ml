@@ -26,9 +26,9 @@ from src.routes import (DATA_PATH,
 # Datasynth uses different names than modelfit; the modelfit names are
 # shorter so we prefer modelfit names
 COMPARTMENT_MAP = {
-    'gdrcylinders': 'gammadistribradiicylinders',
-    'cylinder': 'cylindergpd',
-    'sphere': 'spheregpd',
+    'GDRCylinders': 'gammadistribradiicylinders',
+    'Cylinder': 'cylindergpd',
+    'Sphere': 'spheregpd',
 }
 
 CAMINO_COMPARTMENTS = {

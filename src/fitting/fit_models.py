@@ -15,7 +15,7 @@ from src.routes import DOUBLE2TXT_PATH, MODELFIT_PATH, SCHEME_PATH
 from src.datasets.dataset_factory import get_dataset_data_path
 
 CAMINO_FITS = [
-    "DT",
+    "Tensor",
     "BiZeppelin",
     "BallStick",
     "BallCylinder",
@@ -67,8 +67,7 @@ CAMINO_FITS = [
 FIT_MAP = {
     # Note: Cannot fit BiZeppelin models when they're facing the same
     # direction
-    'DT': 'Tensor',
-    # 'zeppelinzeppelin': 'BiZeppelin',
+    'zeppelinzeppelin': 'BiZeppelin',
 }
 
 LC_CAMINO_FITS = [fit_name.lower() for fit_name in CAMINO_FITS]
@@ -83,7 +82,7 @@ def fit_model_voxels(model):
     the placement of tqdm bars"""
     model_name = re.sub(r"-[0-9]", "", "".join(model)).lower()
     if model_name in FIT_MAP:
-        model_name = FIT_MAP[model_name]
+        model_name = FIT_MAP[model_name].lower()
     print(model_name)
     if model_name not in LC_CAMINO_FITS:
         print('Model {} cannot be fit by Camino; skipping'.format(model_name))

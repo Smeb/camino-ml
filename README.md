@@ -68,3 +68,43 @@ If running on a mac, it is suggested to use `caffeinate -i`, so that the
 mac won't sleep until the tasks are completed:
 
 `caffeinate -i python main.py generate && caffeinate -i python main.py train-all`
+
+
+```
+.
+├── camino            # The Camino repository used to generate data
+├── schemes
+|   ├── PGSE_90_100t.scheme      # A scheme using a gradient strength of 100
+|   └── ...
+├── scripts
+|   ├── run_generate      # Generates data for an Azuru machine
+|   └── setup_ubuntu      # Sets up an Azure Ubuntu machine
+├── src
+|   ├── datasets          # Dataset Generation Module
+|      ├── dataset_factory.py   # factory to generate and import data
+|      └── gen_voxels.py        # entry point for data generation using threads
+|   ├── fitting           # Fitting Module
+|      └── fit_models.py        # Uses Camino to fit compartment models to generated data
+|   ├── machine_learning  # Machine Learning module
+|      ├── algortihms           # Contains the machine learning algorithms used to train models
+|         ├── convolutional_nn.py         # Convolutional Neural Network using Keras and Tensorflow
+|         ├── knn.py                      # K-Nearest Neighbours using Scikit-Learn
+|         ├── multilayer_perceptron.py    # Multilayer Perceptron using Scikit-Learn
+|         ├── random_forest.py            # Random Forest using Scikit-Learn
+|         ├── ridge_regression.py         # Ridge Regression using Scikit-Learn
+|         └── svm.py                      # Support Vector Machine using Scikit-Learn
+|      ├── experiment.py        # Class encapsulating a single experiment (algorithm, train_dataset, test_dataset)
+|      └── ...
+|   └── visualisation   # Visualisation Module
+|      ├── graphs           # Various graphs
+|         └── ...
+|      ├── selectors        # Contains selector methods to select subsets of all the trained data
+|         └── ...
+|      └── ...
+├── main.py           # The entry point for Camino-ml
+├── Makefile          # A makefile which simplifies using main.py
+├── Media          # A .gitignored folder containing visualisations
+├── Results          # A .gitignored folder containing results
+├── Data          # A .gitignored folder containing generated data
+└── ...
+```

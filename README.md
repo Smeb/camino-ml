@@ -93,7 +93,7 @@ mac won't sleep until the tasks are completed:
 |         ├── random_forest.py            # Random Forest using Scikit-Learn
 |         ├── ridge_regression.py         # Ridge Regression using Scikit-Learn
 |         └── svm.py                      # Support Vector Machine using Scikit-Learn
-|      ├── experiment.py        # Class encapsulating a single experiment (algorithm, train_dataset, test_dataset)
+|      ├── experiment.py        # A single experiment (algorithm, train_dataset, test_dataset)
 |      └── ...
 |   └── visualisation   # Visualisation Module
 |      ├── graphs           # Various graphs
